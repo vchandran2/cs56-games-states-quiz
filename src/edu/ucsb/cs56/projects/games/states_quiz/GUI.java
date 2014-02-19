@@ -8,6 +8,8 @@ import java.awt.event.*;
 /**
 	GUI sets up the GUI with the frame that holds the text and the scrollbar.
 	@author Nina Kaufman
+	@author Jenny Vien
+	@author Zhansaya Abdikarimova
 */
 
 public class GUI {

@@ -5,6 +5,8 @@ import javax.swing.*;
 /** 
 	QManager manages the current question and score
 	@author Nina Kaufman
+	@author Jenny Vien
+	@author Zhansaya Abdikarimova
 */
 
 public class QManager{
