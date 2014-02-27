@@ -1,9 +1,8 @@
-/**
- * 
- */
+package edu.ucsb.cs56.projects.games.states_quiz;
 
 /**
  * @author Zhansaya Abdikarimova
+ * @author Jenny Vien
  *
  */
 

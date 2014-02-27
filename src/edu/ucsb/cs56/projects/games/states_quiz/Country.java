@@ -1,3 +1,5 @@
+package edu.ucsb.cs56.projects.games.states_quiz;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -6,6 +8,7 @@ import java.util.Scanner;
 
 /**
  * @author Zhansaya Abdikarimova
+ * @author Jenny Vien
  *
  */
 
