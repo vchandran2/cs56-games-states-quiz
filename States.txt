@@ -1,49 +1,50 @@
-Alabama (485,300,25,25); 
-Alaska  (90,430, 25, 25)	
-Arizona (160,270, 25, 25)
-Arkansas (407,275,25,25)
-California (80,220, 25, 25)
-Colorado (245,205,25,25)
-Connecticut (653,159,25,25)
-Delaware (653,235,25,25)
-Florida (563,366,25,25)
-Georgia (530,300,25,25)
-Hawaii (250,480,25,25)
-Idaho (153,120, 25, 25)
-Illinois Indiana (445,193, 25, 25)
-Iowa (390,162, 25, 25)
-Kansas (330,215,25,25)
-Kentucky (507,222,25,25)
-Louisiana (409,332,25,25)
-Maine (655,70,25,25)
-Maryland (635,290,25,25)
-Massachusetts (685,119,25,25)
-Michigan (494,140,25,25)
-Minnesota (380,100,25,25)
-Mississippi (445,310,25,25)
-Missouri (405,215,25,25)
-Montana (220,70,25,25)
-Nebraska (315,167,25,25)
-Nevada (115,185,25,25)
-New Hampshire (625,40,25,25)
-New Jersey (653,189,25,25)
-New Mexico (230,280,25,25)
-New York (603,121,25,25)
-North Carolina (580,245,25,25)
-North Dakota (315,73,25,25)
-Ohio (520,180,25,25)
-Oklahoma (345,265,25,25)
-Oregon (80,100,25,25)
-Pennsylvania (580,158,25,25)
-Rhode Island (678,145,25,25)
-South Carolina (563,275,25,25)
-South Dakota (315,123,25,25)
-Tennessee (483,255,25,25)
-Texas (320,330,25,25)
-Utah (175,190,25,25)
-Vermont (580,30,25,25)
-Virginia (580,213,25,25)
-Washington (110,50,25,25)
-West Virginia (548,200,25,25)
-Wisconsin (433,120,25,25)
-Wyoming (230,137,25,25)
+Alabama,Montgomery,495,310
+Alaska,Juneau,209,429
+Arizona,Phoenix,150,281
+Arkansas,Little Rock,410,274
+California,Sacramento,51,216
+Colorado,Denver,245,205
+Connecticut,Hartford,687,141
+Delaware,Dover,670,196
+Florida,Tallahassee,584,380
+Georgia,Atlanta,544,306
+Hawaii,Honolulu,507,455
+Idaho,Boise,137,110
+Illinois,Springfield,445,193
+Indiana,Indianapolis,482,185
+Iowa,Des Moines,398,163
+Kansas,Topeka,315,211
+Kentucky,Frankfort,514,222
+Louisiana,Baton Rouge,415,336
+Maine,Augusta,677,51
+Maryland,Annapolis,668,227
+Massachusetts,Boston,686,81
+Michigan,Lansing,494,122
+Minnesota,St. Paul,383,83
+Mississippi,Jackson,450,300
+Missouri,Jefferson City,410,226
+Montana,Helena,195,70
+Nebraska,Lincoln,315,167
+Nevada,Carson City,101,168
+New Hampshire,Concord,638,14
+New Jersey,Trenton,675,173
+New Mexico,Santa Fe,218,282
+New York,Albany,603,121
+North Carolina,Raleigh,601,248
+North Dakota,Bismarck,315,68
+Ohio,Columbus,520,175
+Oklahoma,Oklahoma City,356,274
+Oregon,Salem,67,93
+Pennsylvania,Harrisburg,580,153
+Rhode Island,Providence,685,109
+South Carolina,Columbia,578,282
+South Dakota,Pierre,318,118
+Tennessee,Nashville,491,255
+Texas,Austin,305,336
+Utah,Salt Lake City,162,190
+Vermont,Montpelier,598,27
+Virginia,Richmond,595,213
+Washington,Olympia,86,30
+West Virginia,Charleston,548,200
+Wisconsin,Madison,433,120
+Wyoming,Cheyenne,226,134
