@@ -31,7 +31,7 @@ public class Geopanel extends JPanel implements ActionListener{
 		this.setLayout(null);
 
 		try{
-			map = ImageIO.read(getClass().getClassLoader().getResource("image/blank-map-of-the-united-states2.jpg"));
+			map = ImageIO.read(getClass().getClassLoader().getResource("image/map-of-united-states.jpg"));
 		} 
 		catch(IOException ie){}
 
