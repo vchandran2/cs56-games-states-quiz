@@ -1,10 +1,7 @@
 package edu.ucsb.cs56.projects.games.states_quiz;
 
 import java.util.ArrayList;
-
 import javax.swing.*;
-
-
 
 /**
  * QuestionManager manages the current question and score
