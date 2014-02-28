@@ -76,7 +76,7 @@ public class GUI {
 	}
 
 	/**
-	 * @return questionTextArea
+	 * @return questionTextArea the Text Area with questions
 	 */
 	public JTextArea getQuestionTextArea() {
 	    return this.questionTextArea;
@@ -91,22 +91,21 @@ public class GUI {
 	}
 	
 	/**
-	 * @return answerTextArea
+	 * @return answerTextArea the Text Area with correct answers
 	 */
 	public JTextArea getAnswerTextArea() {
 	    return this.answerTextArea;
 	}
 
 	/**
-	 * Adds text to the answerTextArea.
-	 * @param txt
+	 * @param txt answer that goes into answerTextAres
 	 */
 	public void setAnswerTextArea(String txt) {
 	    this.answerTextArea.append(txt + "\n");
 	}
 
 	/**
-	 * @return geo
+	 * @return geo panel of the map 
 	 */
 	public MapPanel getMapPanel() {
 	    return this.geo;
