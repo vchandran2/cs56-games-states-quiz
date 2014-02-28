@@ -8,7 +8,7 @@ import javax.imageio.*;
 /** Geomain sets and initializes the frame and QuestionManager.
     @author Nina Kaufman
     @author Jenny Vien
-	@author Zhansaya Abdikarimova
+    @author Zhansaya Abdikarimova
 */
 
 public class geomain{
