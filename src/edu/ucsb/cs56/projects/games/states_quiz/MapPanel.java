@@ -72,7 +72,7 @@ public class MapPanel extends JPanel implements ActionListener{
 		
     }
     /**
-	@param g Graphics object that print the image of the map
+	@param g Graphics object that prints the image of the map
     */
 
      public void paintComponent(Graphics g){
