@@ -72,7 +72,7 @@ public class State {
 	
     /**
      * Setter for the name of the state.
-     * @param name, the name of the state
+     * @param name the name of the state
      */
     public void setName(String name){
 	this.name = name;
@@ -80,7 +80,7 @@ public class State {
 
     /**
      * Setter for the capital of the state.
-     * @param capital, the capital of the state
+     * @param capital the capital of the state
      */	
     public void setCapital(String capital){
 	this.capital = capital;
@@ -88,7 +88,7 @@ public class State {
 	
     /**
      * Setter for the x-coordinate of the state.
-     * @param x, the x-coordinate of the state
+     * @param x the x-coordinate of the state
      */
     public void setXCoord(int x){
 	this.xCoord = x;
@@ -96,7 +96,7 @@ public class State {
 	
     /**
      * Setter for the y-coordinate of the state.
-     * @param y, the y-coordinate of the state
+     * @param y the y-coordinate of the state
      */	
     public void setYCoord(int y){
 	this.yCoord = y;

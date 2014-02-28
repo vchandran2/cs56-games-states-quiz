@@ -4,11 +4,11 @@
 -->
 
 <property environment = "env"/>
-<property name = "user" value ="rnkaufman" />
+<property name = "user" value ="zhansaya" />
 <property name = "webRoot" value = "${env.HOME}/public_html/"/>
 <property name = "webBaseURL" value = "http://www.cs.ucsb.edu/~${user}"/>
 <property name = "project" value = "cs56_S12_0000770"/>
-<property name = "projectPath" value = "cs56/S12/issues/0000770"/>
+<property name = "projectPath" value = "cs56/W14/StateQuiz"/>
 <property name = "javadocDest" value = "${webRoot}/${projectPath}/javadoc"/>
 <property name = "javadocURL" value = "${webBaseURL}/${projectPath}/javadoc"/>
 <property name = "main" value = "edu.ucsb.cs56.projects.games.states_quiz.geomain"/>
