@@ -24,11 +24,14 @@ public class GUI {
 	private JScrollPane answerScrollPane;
 	private Font ourFont;
 	
+	private QuizFrontPage frontPage;
 	
 
 	public GUI() {
 	    ourFont = new Font("Arial", Font.PLAIN, 24);
 	    geo = new MapPanel();
+	    
+	    frontPage = new QuizFrontPage();
 		
 	    //Setting up the text area to display questions
 	    questionTextArea = new JTextArea(4, 20);
@@ -63,9 +66,12 @@ public class GUI {
 
 	    frame.setSize(980, 680);
 	    frame.setTitle("You think you know all US states?");
-	    frame.getContentPane().add(BorderLayout.CENTER, geo);
-	    frame.getContentPane().add(BorderLayout.SOUTH, questionScrollPane);
-	    frame.getContentPane().add(BorderLayout.EAST, answerScrollPane);
+	    
+	    frame.getContentPane().add(frontPage);
+	    
+	    //frame.getContentPane().add(BorderLayout.CENTER, geo);
+	    //frame.getContentPane().add(BorderLayout.SOUTH, questionScrollPane);
+	    //frame.getContentPane().add(BorderLayout.EAST, answerScrollPane);
 	    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    frame.setLocation(20, 40);
 	    frame.setResizable(false);

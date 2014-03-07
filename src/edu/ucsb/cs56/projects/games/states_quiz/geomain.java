@@ -14,11 +14,14 @@ import javax.imageio.*;
 public class geomain{
 
 	private static GUI frame;
+	private static QuizFrontPage frame1;
 	private static QuestionManager questionManager;
 
 	public static void main (String[] args){
 		questionManager = new QuestionManager();		
 		frame = new GUI();
+		//frame1 = new QuizFrontPage();
+		
 		questionManager.init();
 	}
 
