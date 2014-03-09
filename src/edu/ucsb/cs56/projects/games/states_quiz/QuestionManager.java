@@ -12,19 +12,21 @@ import javax.swing.*;
  */
 
 public class QuestionManager {
-	private GUI gui;
-	private MapPanel geo;
+	private GamePanel gamePanel;
+	private MapPanel mapPanel;
+
+	private String option;
 	
 	private int currentQuestion;
 	private int currentScore;
 
 	//private String[] stateNames;
-	
+
 	private ArrayList<State> states;
 	private ArrayList<Integer> randStateIndexes;
 	private ArrayList<State> correctStates;
 	private int randIndex;
-	
+
 
 	/**
 	 * Constructor QuestionManager creates a new array of the fifty state names
@@ -36,23 +38,24 @@ public class QuestionManager {
 
 	/**
 	 * Sets the current question and score to zero and then asks the first
-	 * question. Also gets the GUI and MapPanel from geomain.
+	 * question. Also gets the GUI and MapPanel from GameFrame.
 	 */
 	public void init() {
+		//System.out.println(option);
 		correctStates = new ArrayList<State>();
 		randStateIndexes = new ArrayList<Integer>();
-		gui = geomain.getGUI();
-		geo = gui.getMapPanel();
-		states = geo.getCountry().getStatesArray();
-		
+		gamePanel = GameFrame.getGamePanel();
+		mapPanel = gamePanel.getMapPanel();
+		states = mapPanel.getCountry().getStatesArray();
+
 		for(int i=0;i<states.size();i++){
 			randStateIndexes.add(i);
 		}
-		
+
 		randIndex = (int) (Math.random() * states.size());
 		currentQuestion = randStateIndexes.get(randIndex);
 		currentScore = 0;
-		this.askNextQuestion();
+		this.askNextQuestion(option);
 	}
 
 	/**
@@ -60,13 +63,17 @@ public class QuestionManager {
 	 * out the current state.
 	 */
 
-	public void askNextQuestion() {
+	public void askNextQuestion(String option) {
 		if(!randStateIndexes.isEmpty()){
-			geomain.getGUI().setQuestionTextArea("Click on: " + states.get(currentQuestion).getName() + "\n");
-			geo.setAnswer(geo.stateButtons[currentQuestion]);
+			if(option.equals("State")){
+				GameFrame.getGamePanel().setQuestionTextArea("Click on: " + states.get(currentQuestion).getName() + "\n");
+			}
+			else
+				GameFrame.getGamePanel().setQuestionTextArea("Click on: " + states.get(currentQuestion).getCapital() + "\n");
+			mapPanel.setAnswer(mapPanel.stateButtons[currentQuestion]);
 		}
 		else
-			geomain.getGUI().setQuestionTextArea("You're finished! Yay!");
+			GameFrame.getGamePanel().setQuestionTextArea("You're finished! Yay!");
 	}
 
 	/**
@@ -77,25 +84,36 @@ public class QuestionManager {
 
 	public void receiveAnswer(Object o) {
 		JButton answer = (JButton) o;
+		
+		if (answer == mapPanel.stateButtons[currentQuestion]) {
+			GameFrame.getGamePanel().setQuestionTextArea("Congrats! ");
+			
+			if(option.equals("State")){
+				GameFrame.getGamePanel().setAnswerTextArea(states.get(currentQuestion).getName());
+			}
+			else{
+				
+				GameFrame.getGamePanel().setAnswerTextArea(states.get(currentQuestion).getCapital());
+			}
 
-		if (answer == geo.stateButtons[currentQuestion]) {
-			geomain.getGUI().setQuestionTextArea("Congrats! ");
-			geomain.getGUI().setAnswerTextArea(states.get(currentQuestion).getName());
-			
 			correctStates.add(states.get(currentQuestion));
-			
+
 			randStateIndexes.remove(randIndex);
 			randIndex = (int) (Math.random() * (randStateIndexes.size()-1));
 			currentQuestion = randStateIndexes.get(randIndex);
 			currentScore++;
 		} else {
-			
-			geomain.getGUI().setQuestionTextArea("Nope! ");
+
+			GameFrame.getGamePanel().setQuestionTextArea("Nope! ");
 		}
 
-		geomain.getGUI().setQuestionTextArea(
+		GameFrame.getGamePanel().setQuestionTextArea(
 				"Your current score is: " + currentScore + "\n");
-		this.askNextQuestion();
+		this.askNextQuestion(option);
 	}
 	
+	public void setOption(String option){
+		this.option = option;
+	}
+
 }
