@@ -11,13 +11,21 @@ This is a state quiz that currently tests knowledge about locations of states an
 
 ## Documentation
 
-First when the quiz-game starts, it askes if user wants to be tested with states locations or their capital locations. The initial cover page is in `QuizFrontPage` class where user chooses state or capital quiz. 
+The main frame of the game is in `GameFrame` class that holds two different main panels: `FrontPanel` and `GamePanel`. 
+
+First when the quiz-game starts, it askes if user wants to be tested with states locations or their capital locations. The initial cover page is in `FrontPanel` class where there are two buttons for state or capital quizes. 
 
 ![](http://i.imgur.com/1IdD5Zv.png)
 
-The program reads data in `Country` class. It reades country’s states’ names, their capitals, and locations of buttons on every state to select them from `States.txt` file: ``` Alabama,Montgomery,495,310 ```
+After selecting option of the quiz, `GamePanel` class runs with selected option. The class has three main parts. One of the is panel called `MapPanel` that holds USA map with buttons for every state. Other two parts are questions scroll bar and correct answers scroll bar. If user selects state option it asks questions about each state locations in random order, and if he or she selects state capitals option, the game will generate capital questions respectevily. 
 
-As you can see, in the constructor, every Country object has its name, capital and list of its states. 
+![](http://i.imgur.com/XJQ9DyI.png)
+
+![](http://i.imgur.com/ALQwhRo.png)
+
+* All data is in `States.txt` file. It has list of states, their capitals and locations for buttons for every state: ``` Alabama,Montgomery,495,310 ```
+
+* The program reads data in `Country` class. As you can see, in the constructor, every Country object has its name, capital and list of its states. It creates `ArrayList` of `State` objects.  
 ```java
 public Country(){
 	states = new ArrayList<State>();
@@ -25,7 +33,18 @@ public Country(){
 	this.capital = null;
 }
 ``` 
-Below there is a method that reads all the information about the country from a file
+
+The `State` class stores information about each state of particular country
+
+```java
+public State(String name, String capital, int x, int y){
+	this.name = name;
+	this.capital = capital;
+	this.xCoord = x;
+	this.yCoord = y;
+}
+```
+Below there is a method in `Country` class that reads all the information about the country from a file
 ```java
 public void addStates(int numberOfStates, File file) throws Exception {
 	Scanner scanner = new Scanner(file);
@@ -45,28 +64,9 @@ public void addStates(int numberOfStates, File file) throws Exception {
 	}
  }
 ```
-* The `State` class stores information about each state of particular country
 
-```java
-public State(String name, String capital, int x, int y){
-	this.name = name;
-	this.capital = capital;
-	this.xCoord = x;
-	this.yCoord = y;
-}
-```
-
-* The `GamePanel` class contains the main panel of the game. It has three main parts:
-	- the map of the country with colored states and buttons on them
-	- questions scroll bar
-	- correct answers scroll bar  
-	
-![](http://i.imgur.com/XJQ9DyI.png)
-
-![](http://i.imgur.com/ALQwhRo.png)
-
-* The `QuestionManager` class has the basic logic for running the quiz. It stores list of states and their capitals, generates random indexes for questions, and asks questions until all of the states asked. 
+* Another very important file that actually runs the game is `QuestionManager` class. It has the basic logic for running the quiz. It stores list of states and their capitals, generates random indexes for questions, and asks questions until all of the states asked. 
 
 ## How to run 
-To start the game, use `ant run`. 
+The main class in `GameMain` and in order to start the game, use `ant run`. 
 
