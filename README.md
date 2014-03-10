@@ -4,6 +4,9 @@
 Zhansaya Abdikarimova
 Jenny Vien
 
+
+## Description
+
 This is a state quiz that currently tests knowledge about locations of states and their capitals on US map. As for the future, it can be advanced for choosing different countries and continents. 
 
 
@@ -75,4 +78,11 @@ public void addStates(int numberOfStates, File file) throws Exception {
 
 ## How to run 
 The main class in `GameMain` and in order to start the game, use `ant run`. 
+
+## Ideas for future developers.
+There are several ways of how the game can be developed further:
+	- game has quizes for states and capitals mixed together
+	- there is an option for continent, countries quizes
+	- quizes for states and capitals of other countries respectively
+	- ...
 
