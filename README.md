@@ -79,7 +79,7 @@ public void addStates(int numberOfStates, File file) throws Exception {
 ## How to run 
 The main class in `GameMain` and in order to start the game, use `ant run`. 
 
-## Ideas for future developers.
+### Ideas for future developers
 There are several ways of how the game can be developed further:
 	
 	- game has quizes for states and capitals mixed together
