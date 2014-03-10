@@ -17,15 +17,20 @@ First when the quiz-game starts, it askes if user wants to be tested with states
 
 ![](http://i.imgur.com/1IdD5Zv.png)
 
-After selecting option of the quiz, `GamePanel` class runs with selected option. The class has three main parts. One of the is panel called `MapPanel` that holds USA map with buttons for every state. Other two parts are questions scroll bar and correct answers scroll bar. If user selects state option it asks questions about each state locations in random order, and if he or she selects state capitals option, the game will generate capital questions respectevily. 
+After selecting option of the quiz, `GamePanel` class runs with selected option. The class has three main parts. One of the is panel called `MapPanel` that holds USA map with buttons for every state. Other two parts are questions scroll bar and correct answers scroll bar. If user selects state option it asks questions about each state locations in random order, and if he or she selects state capitals option, the game will generate capital questions respectevily. Here are the examples of states and capitals quizes:  
+
 
 ![](http://i.imgur.com/XJQ9DyI.png)
 
+
 ![](http://i.imgur.com/ALQwhRo.png)
+
+
 
 * All data is in `States.txt` file. It has list of states, their capitals and locations for buttons for every state: ``` Alabama,Montgomery,495,310 ```
 
 * The program reads data in `Country` class. As you can see, in the constructor, every Country object has its name, capital and list of its states. It creates `ArrayList` of `State` objects.  
+
 ```java
 public Country(){
 	states = new ArrayList<State>();
@@ -45,6 +50,7 @@ public State(String name, String capital, int x, int y){
 }
 ```
 Below there is a method in `Country` class that reads all the information about the country from a file
+
 ```java
 public void addStates(int numberOfStates, File file) throws Exception {
 	Scanner scanner = new Scanner(file);
