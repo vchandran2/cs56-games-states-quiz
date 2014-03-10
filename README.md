@@ -7,20 +7,20 @@ Jenny Vien
 
 ## Description
 
-This is a state quiz that currently tests knowledge about locations of states and their capitals on US map. As for the future, it can be advanced for choosing different countries and continents. 
+* This is a state quiz that currently tests knowledge about locations of states and their capitals on US map. As for the future, it can be advanced for choosing different countries and continents. 
 
 
 * javadoc: http://www.cs.ucsb.edu/~zhansaya/cs56/W14/StateQuiz/javadoc/
 
 ## Documentation
 
-The main frame of the game is in `GameFrame` class that holds two different main panels: `FrontPanel` and `GamePanel`. 
+* The main frame of the game is in `GameFrame` class that holds two different main panels: `FrontPanel` and `GamePanel`. 
 
-First when the quiz-game starts, it askes if user wants to be tested with states locations or their capital locations. The initial cover page is in `FrontPanel` class where there are two buttons for state or capital quizes. 
+* First when the quiz-game starts, it askes if user wants to be tested with states locations or their capital locations. The initial cover page is in `FrontPanel` class where there are two buttons for state or capital quizes. 
 
 ![](http://i.imgur.com/1IdD5Zv.png)
 
-After selecting option of the quiz, `GamePanel` class runs with selected option. The class has three main parts. One of the is panel called `MapPanel` that holds USA map with buttons for every state. Other two parts are questions scroll bar and correct answers scroll bar. If user selects state option it asks questions about each state locations in random order, and if he or she selects state capitals option, the game will generate capital questions respectevily. Here are the examples of states and capitals quizes:  
+* After selecting option of the quiz, `GamePanel` class runs with selected option. The class has three main parts. One of the is panel called `MapPanel` that holds USA map with buttons for every state. Other two parts are questions scroll bar and correct answers scroll bar. If user selects state option it asks questions about each state locations in random order, and if he or she selects state capitals option, the game will generate capital questions respectevily. Here are the examples of states and capitals quizes:  
 
 
 ![](http://i.imgur.com/XJQ9DyI.png)
