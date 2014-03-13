@@ -7,20 +7,20 @@ Jenny Vien
 
 ## Description
 
-* This is a state quiz that currently tests knowledge about locations of states and their capitals on US map. As for the future, it can be advanced for choosing different countries and continents. 
+* This application is a state quiz that tests the users' knowledge of the locations of states and capitals on the US map. As for the future, it can be advanced to choosing different countries and continents. 
 
 
 * javadoc: http://www.cs.ucsb.edu/~zhansaya/cs56/W14/StateQuiz/javadoc/
 
 ## Documentation
 
-* The main frame of the game is in `GameFrame` class that holds two different main panels: `FrontPanel` and `GamePanel`. 
+* The main frame of the game is in the `GameFrame` class that holds two different main panels: `FrontPanel` and `GamePanel`. 
 
-* First when the quiz-game starts, it askes if user wants to be tested with states locations or their capital locations. The initial cover page is in `FrontPanel` class where there are two buttons for state or capital quizes. 
+* When the quiz starts, it askes if the user wants to be tested on state locations or their capital locations. The initial cover page is in the `FrontPanel` class where there are two buttons for the two options. 
 
 ![](http://i.imgur.com/1IdD5Zv.png)
 
-* After selecting option of the quiz, `GamePanel` class runs with selected option. The class has three main parts. One of the is panel called `MapPanel` that holds USA map with buttons for every state. Other two parts are questions scroll bar and correct answers scroll bar. If user selects state option it asks questions about each state locations in random order, and if he or she selects state capitals option, the game will generate capital questions respectevily. Here are the examples of states and capitals quizes:  
+* After selecting option of the quiz, `GamePanel` class runs the selected option. The `GamePanel` class has three main parts, a MapPanel, a question scrollbar, and an answer scroll bar. The `MapPanel` class holds the map of the United States with buttons for every state. If user selects state option it asks questions about each state locations in random order, and if he or she selects state capitals option, the game will generate capital questions respectevily. Here are the examples of states and capitals quizes:  
 
 
 ![](http://i.imgur.com/XJQ9DyI.png)
@@ -30,9 +30,9 @@ Jenny Vien
 
 
 
-* All data is in `States.txt` file. It has list of states, their capitals and locations for buttons for every state: ``` Alabama,Montgomery,495,310 ```
+* All of the data is stored in the `States.txt` file. It has a list of states, their capitals and locations for buttons: ``` Alabama,Montgomery,495,310 ```
 
-* The program reads data in `Country` class. As you can see, in the constructor, every Country object has its name, capital and list of its states. It creates `ArrayList` of `State` objects.  
+* The program reads data in the `Country` class. As you can see, in the constructor, every Country object has its name, capital and list of its states. It creates an `ArrayList` of `State` objects.  
 
 ```java
 public Country(){
@@ -42,7 +42,7 @@ public Country(){
 }
 ``` 
 
-The `State` class stores information about each state of particular country
+The `State` class stores information about each state of a particular country
 
 ```java
 public State(String name, String capital, int x, int y){
@@ -74,7 +74,7 @@ public void addStates(int numberOfStates, File file) throws Exception {
  }
 ```
 
-* Another very important file that actually runs the game is `QuestionManager` class. It has the basic logic for running the quiz. It stores list of states and their capitals, generates random indexes for questions, and asks questions until all of the states asked. 
+* Another very important file that actually runs the game is `QuestionManager` class. It has the basic logic for running the quiz. It stores the list of states and their capitals, generates random indexes for the questions, and asks questions until all of the states asked. 
 
 ## How to run 
 The main class in `GameMain` and in order to start the game, use `ant run`. 
@@ -82,8 +82,9 @@ The main class in `GameMain` and in order to start the game, use `ant run`.
 ### Ideas for future developers
 There are several ways of how the game can be developed further:
 	
-	- game has quizes for states and capitals mixed together
+	- game has quizzes for states and capitals mixed together
 	- there is an option for continent, countries quizes
-	- quizes for states and capitals of other countries respectively
+	- quizzes for states and capitals of other countries respectively
+	- go back button for both state and capital quiz
 	- ...
 
