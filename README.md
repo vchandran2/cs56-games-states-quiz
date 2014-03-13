@@ -20,7 +20,7 @@ Jenny Vien
 
 ![](http://i.imgur.com/1IdD5Zv.png)
 
-* After selecting option of the quiz, `GamePanel` class runs the selected option. The `GamePanel` class has three main parts, a MapPanel, a question scrollbar, and an answer scroll bar. The `MapPanel` class holds the map of the United States with buttons for every state. If user selects state option it asks questions about each state locations in random order, and if he or she selects state capitals option, the game will generate capital questions respectevily. Here are the examples of states and capitals quizes:  
+* After selecting option of the quiz, `GamePanel` class runs the selected option. The `GamePanel` class has three main parts, a MapPanel, a question scrollbar, and an answer scroll bar. The `MapPanel` class holds the map of the United States with buttons for every state. If user selects state option it asks questions about each state locations in random order, and if he or she selects state capitals option, the game will generate capital questions respectevily. Here are the examples of states and capitals quizzes:  
 
 
 ![](http://i.imgur.com/XJQ9DyI.png)
