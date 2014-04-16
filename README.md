@@ -1,6 +1,12 @@
 # cs56-games-states-quiz
 ======================
 
+project history
+===============
+```
+ W14 | jcneally 5pm | zhansaya19, jennyvien | Quiz on US States with GUI
+```
+
 Zhansaya Abdikarimova
 Jenny Vien
 
