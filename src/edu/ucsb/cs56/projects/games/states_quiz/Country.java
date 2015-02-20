@@ -18,7 +18,7 @@ public class Country {
     private ArrayList<State> states;
 	
     /**
-     * Construtor for creating a Country object.
+     * Constructor for creating a Country object.
      */
     public Country(){
 	states = new ArrayList<State>();

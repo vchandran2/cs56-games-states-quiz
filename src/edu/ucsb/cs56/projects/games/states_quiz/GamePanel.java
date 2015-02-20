@@ -14,7 +14,7 @@ import java.awt.event.*;
  */
 
 
-public class GamePanel extends JPanel{
+public class GamePanel extends JPanel {
 
     private MapPanel mapPanel; // mapPanel is a MapPanel reference
     private JPanel panel;
