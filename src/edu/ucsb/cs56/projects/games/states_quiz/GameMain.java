@@ -6,8 +6,8 @@ public class GameMain {
      * @param args
      */
     public static void main(String[] args) {
-	
-	GameFrame gameFrame = new GameFrame();
+
+        GameFrame gameFrame = new GameFrame();
     }
 
 }
