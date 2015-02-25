@@ -25,7 +25,7 @@ public class FrontPanel extends JPanel{
             ie.printStackTrace();
         }
 
-
+        assert (map != null);
 
         title = new JLabel("Welcome to Country Quiz!",JLabel.CENTER);
         Font titleFont = new Font("TimesRoman",Font.PLAIN,50);

@@ -1,6 +1,7 @@
 package edu.ucsb.cs56.projects.games.states_quiz;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -10,16 +11,15 @@ import java.awt.event.ActionListener;
  @author Zhansaya Abdikarimova
  */
 
-public class GameFrame extends JFrame implements ActionListener{
+public class GameFrame extends JFrame implements ActionListener {
 
-    private static GamePanel gamePanel;
     private FrontPanel frontPanel;
+    private static Dimension frameDimension = new Dimension(980, 680);
+    private static GamePanel gamePanel;
     private static QuestionManager questionManager;
 
 
-    public GameFrame(){
-
-
+    public GameFrame() {
         questionManager = new QuestionManager();
         gamePanel = new GamePanel();
 
@@ -27,13 +27,14 @@ public class GameFrame extends JFrame implements ActionListener{
         frontPanel.getStateButton().addActionListener(this);
         frontPanel.getCapitalButton().addActionListener(this);
 
-
-        this.setSize(980, 680);
-        this.setTitle("You think you know all US states?");
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(false);
         this.getContentPane().add(gamePanel);
         this.getContentPane().add(frontPanel);
+        this.setMinimumSize(frameDimension);
+        
+        this.setTitle("You think you know all US states?");
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
         this.setVisible(true);
     }
 
