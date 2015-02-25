@@ -1,13 +1,12 @@
 package edu.ucsb.cs56.projects.games.states_quiz;
 
+/**
+ * Runner that starts up the game.
+ */
 public class GameMain {
 
-    /**
-     * @param args
-     */
     public static void main(String[] args) {
-
-        GameFrame gameFrame = new GameFrame();
+        new GameFrame();
     }
 
 }

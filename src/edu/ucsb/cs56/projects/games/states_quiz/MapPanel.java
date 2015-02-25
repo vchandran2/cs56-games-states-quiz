@@ -19,6 +19,7 @@ import java.util.ArrayList;
  * @author Nina Kaufman
  * @author Jenny Vien
  * @author Zhansaya Abdikarimova
+ * @author Nick Eidler
  */
 
 public class MapPanel extends JPanel implements ActionListener {
@@ -33,7 +34,6 @@ public class MapPanel extends JPanel implements ActionListener {
     private BufferedImage map;
 
     public MapPanel() {
-        questionManager = GameFrame.getQuestionManager();
         this.setLayout(null);
         try {
             map = ImageIO.read(getClass().getClassLoader().getResource("image/map-of-united-states.jpg"));
@@ -78,6 +78,10 @@ public class MapPanel extends JPanel implements ActionListener {
     public void paintComponent(Graphics g) {
         g.drawImage(map, 0, 0, this);
 
+    }
+
+    public void setQuestionManager(QuestionManager qm) {
+        this.questionManager = qm;
     }
 
     /**

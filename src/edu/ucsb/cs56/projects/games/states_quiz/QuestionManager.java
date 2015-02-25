@@ -9,17 +9,17 @@ import java.util.ArrayList;
  * @author Nina Kaufman
  * @author Jenny Vien
  * @author Zhansaya Abdikarimova
+ * @author Nick Eidler
  */
 
+// TODO: Turn this into an abstract class that supports different game types via subclasses
 public class QuestionManager {
     private GamePanel gamePanel;
     private MapPanel mapPanel;
 
     private String option;
-
     private int currentQuestion;
     private int currentScore;
-
 
     private ArrayList<State> states;
     private ArrayList<Integer> randStateIndexes;
@@ -31,8 +31,11 @@ public class QuestionManager {
      * Constructor QuestionManager creates a new array of the fifty state names
      */
 
-    public QuestionManager() {
+    public QuestionManager(GamePanel parent) {
         states = new ArrayList<State>();
+        correctStates = new ArrayList<State>();
+        randStateIndexes = new ArrayList<Integer>();
+        gamePanel = parent;
     }
 
     /**
@@ -40,10 +43,6 @@ public class QuestionManager {
      * question. Also gets the GUI and MapPanel from GameFrame.
      */
     public void init() {
-        //System.out.println(option);
-        correctStates = new ArrayList<State>();
-        randStateIndexes = new ArrayList<Integer>();
-        gamePanel = GameFrame.getGamePanel();
         mapPanel = gamePanel.getMapPanel();
         states = mapPanel.getCountry().getStatesArray();
 
@@ -65,14 +64,14 @@ public class QuestionManager {
     public void askNextQuestion(String option) {
         if(!randStateIndexes.isEmpty()){
             if(option.equals("State")){
-                GameFrame.getGamePanel().setQuestionTextArea("Click on: " + states.get(currentQuestion).getName() + "\n");
+                gamePanel.setQuestionTextArea("Click on: " + states.get(currentQuestion).getName() + "\n");
             }
             else
-                GameFrame.getGamePanel().setQuestionTextArea("Click on: " + states.get(currentQuestion).getCapital() + "\n");
+                gamePanel.setQuestionTextArea("Click on: " + states.get(currentQuestion).getCapital() + "\n");
             mapPanel.setAnswer(mapPanel.stateButtons[currentQuestion]);
         }
         else
-            GameFrame.getGamePanel().setQuestionTextArea("You're finished! Yay!");
+            gamePanel.setQuestionTextArea("You're finished! Yay!");
     }
 
     /**
@@ -85,14 +84,13 @@ public class QuestionManager {
         JButton answer = (JButton) o;
 
         if (answer == mapPanel.stateButtons[currentQuestion]) {
-            GameFrame.getGamePanel().setQuestionTextArea("Congrats! ");
+            gamePanel.setQuestionTextArea("Congrats! ");
 
             if(option.equals("State")){
-                GameFrame.getGamePanel().setAnswerTextArea(states.get(currentQuestion).getName());
+                gamePanel.setAnswerTextArea(states.get(currentQuestion).getName());
             }
             else{
-
-                GameFrame.getGamePanel().setAnswerTextArea(states.get(currentQuestion).getCapital());
+                gamePanel.setAnswerTextArea(states.get(currentQuestion).getCapital());
             }
 
             correctStates.add(states.get(currentQuestion));
@@ -102,11 +100,10 @@ public class QuestionManager {
             currentQuestion = randStateIndexes.get(randIndex);
             currentScore++;
         } else {
-
-            GameFrame.getGamePanel().setQuestionTextArea("Nope! ");
+            gamePanel.setQuestionTextArea("Nope! ");
         }
 
-        GameFrame.getGamePanel().setQuestionTextArea("Your current score is: " + currentScore + "\n");
+        gamePanel.setQuestionTextArea("Your current score is: " + currentScore + "\n");
         this.askNextQuestion(option);
     }
 

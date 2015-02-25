@@ -4,7 +4,7 @@ package edu.ucsb.cs56.projects.games.states_quiz;
  * State represents a state such as California and New York.
  * @author Zhansaya Abdikarimova
  * @author Jenny Vien
- *
+ * @author Nick Eidler
  */
 
 public class State {

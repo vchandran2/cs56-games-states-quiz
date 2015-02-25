@@ -9,7 +9,7 @@ import java.util.Scanner;
  * Country represent a country such as the United States.
  * @author Zhansaya Abdikarimova
  * @author Jenny Vien
- *
+ * @author Nick Eidler
  */
 
 public class Country {

@@ -9,19 +9,21 @@ import java.awt.event.ActionListener;
  @author Nina Kaufman
  @author Jenny Vien
  @author Zhansaya Abdikarimova
+ @author Nick Eidler
  */
 
 public class GameFrame extends JFrame implements ActionListener {
 
+    private GamePanel gamePanel;
     private FrontPanel frontPanel;
     private static Dimension frameDimension = new Dimension(980, 680);
-    private static GamePanel gamePanel;
-    private static QuestionManager questionManager;
+    private QuestionManager questionManager;
 
 
     public GameFrame() {
-        questionManager = new QuestionManager();
         gamePanel = new GamePanel();
+        questionManager = new QuestionManager(gamePanel);
+        gamePanel.getMapPanel().setQuestionManager(questionManager);
 
         frontPanel = new FrontPanel();
         frontPanel.getStateButton().addActionListener(this);
@@ -31,28 +33,20 @@ public class GameFrame extends JFrame implements ActionListener {
         this.getContentPane().add(gamePanel);
         this.getContentPane().add(frontPanel);
         this.setMinimumSize(frameDimension);
-        
+
         this.setTitle("You think you know all US states?");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         this.setVisible(true);
     }
 
-
-    /**
-     * @return GUI frame the whole window of the game
-     */
-    public static GamePanel getGamePanel(){
-        return gamePanel;
-    }
-
     /**
      * @return questionManager
      */
 
-    public static QuestionManager getQuestionManager(){
-        return questionManager;
-    }
+//    public static QuestionManager getQuestionManager(){
+//        return questionManager;
+//    }
 
     @Override
     public void actionPerformed(ActionEvent e){
@@ -69,8 +63,8 @@ public class GameFrame extends JFrame implements ActionListener {
             option = "State";
             System.out.println("States");
         }
+        // TODO: Add more game modes
         questionManager.setOption(option);
         questionManager.init();
     }
-
 }
