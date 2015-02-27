@@ -33,13 +33,14 @@ public class FrontPanel extends JPanel{
 
 
         stateButton = new JButton("States");
-        capitalButton = new JButton("Capitals");
         stateButton.setFont(new Font("TimesRoman",Font.PLAIN,30));
-        capitalButton.setFont(new Font("TimesRoman",Font.PLAIN,30));
+
+        capitalButton = new JButton("Capitals");
+        capitalButton.setFont(new Font("TimesRoman", Font.PLAIN, 30));
 
         title.setBounds(100,80,800,200);
         stateButton.setBounds(340,280,300,100);
-        capitalButton.setBounds(340,400,300,100);
+        capitalButton.setBounds(340, 400, 300, 100);
 
         this.add(title);
         this.add(stateButton);

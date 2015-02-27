@@ -26,9 +26,8 @@ public class GameFrame extends JFrame implements ActionListener {
 
     public GameFrame() {
         gamePanel = new GamePanel();
-//        gamePanel.getMapPanel().setQuestionManager(questionManager);
-
         frontPanel = new FrontPanel();
+
         frontPanel.getStateButton().addActionListener(this);
         frontPanel.getCapitalButton().addActionListener(this);
 
@@ -57,7 +56,7 @@ public class GameFrame extends JFrame implements ActionListener {
             questionManager = new StateQuestionManager(gamePanel);
             System.out.println("States");
         }
-        // TODO: Add more game modes
+
         questionManager.init();
     }
 }

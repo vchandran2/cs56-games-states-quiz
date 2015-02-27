@@ -9,19 +9,17 @@ package edu.ucsb.cs56.projects.games.states_quiz;
 
 public class State {
 
-    private String name;
-    private String capital;
-    private int xCoord;
-    private int yCoord;
+    private String name, capital;
+    private int xCoord, yCoord;
 
     /**
      * The default no-args constructor for State.
      */
     public State(){
-        name=null;
-        capital=null;
-        xCoord=0;
-        yCoord=0;
+        name = null;
+        capital = null;
+        xCoord = 0;
+        yCoord = 0;
     }
 
     /**
