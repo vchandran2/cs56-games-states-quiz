@@ -14,11 +14,15 @@ import java.awt.event.ActionListener;
 
 public class GameFrame extends JFrame implements ActionListener {
 
+    private static Dimension frameDimension = new Dimension(980, 680);
+
     private GamePanel gamePanel;
     private FrontPanel frontPanel;
-    private static Dimension frameDimension = new Dimension(980, 680);
     private QuestionManager questionManager;
 
+    public static void main(String[] args) {
+        new GameFrame();
+    }
 
     public GameFrame() {
         gamePanel = new GamePanel();
@@ -39,14 +43,6 @@ public class GameFrame extends JFrame implements ActionListener {
 
         this.setVisible(true);
     }
-
-    /**
-     * @return questionManager
-     */
-
-//    public static QuestionManager getQuestionManager(){
-//        return questionManager;
-//    }
 
     @Override
     public void actionPerformed(ActionEvent e){
