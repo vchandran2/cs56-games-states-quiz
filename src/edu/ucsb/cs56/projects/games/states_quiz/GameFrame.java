@@ -26,8 +26,7 @@ public class GameFrame extends JFrame implements ActionListener {
 
     public GameFrame() {
         gamePanel = new GamePanel();
-        questionManager = new QuestionManager(gamePanel);
-        gamePanel.getMapPanel().setQuestionManager(questionManager);
+//        gamePanel.getMapPanel().setQuestionManager(questionManager);
 
         frontPanel = new FrontPanel();
         frontPanel.getStateButton().addActionListener(this);
@@ -46,21 +45,19 @@ public class GameFrame extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e){
-        String option;
         frontPanel.setVisible(false);
         gamePanel.setVisible(true);
         if(e.getActionCommand().matches("Capitals")){
 
-            option = "Capital";
+            questionManager = new CapitalQuestionManager(gamePanel);
             System.out.println("Capitals");
 
         }
         else {
-            option = "State";
+            questionManager = new StateQuestionManager(gamePanel);
             System.out.println("States");
         }
         // TODO: Add more game modes
-        questionManager.setOption(option);
         questionManager.init();
     }
 }
