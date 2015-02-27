@@ -13,17 +13,17 @@ import java.util.ArrayList;
  */
 
 public abstract class QuestionManager {
-    private GamePanel gamePanel;
-    private MapPanel mapPanel;
+    protected GamePanel gamePanel;
+    protected MapPanel mapPanel;
 
-    private String option;
-    private int currentQuestion;
-    private int randIndex;
-    private int currentScore;
+    protected String option;
+    protected int currentQuestion;
+    protected int randIndex;
+    protected int currentScore;
 
-    private ArrayList<State> states;
-    private ArrayList<Integer> randStateIndexes;
-    private ArrayList<State> correctStates;
+    protected ArrayList<State> states;
+    protected ArrayList<Integer> randStateIndexes;
+    protected ArrayList<State> correctStates;
 
 
     /**
@@ -96,8 +96,6 @@ public abstract class QuestionManager {
 
     public abstract void receiveAnswer(JButton answerButton);
 //    {
-//        JButton answer = (JButton) o;
-//
 //        if (answer == mapPanel.stateButtons[currentQuestion]) {
 //            gamePanel.setQuestionTextArea("Congrats! ");
 //
