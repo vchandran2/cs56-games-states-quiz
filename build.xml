@@ -11,7 +11,7 @@
     <property name = "projectPath" value = "cs56/W14/StateQuiz"/>
     <property name = "javadocDest" value = "${webRoot}/${projectPath}/javadoc"/>
     <property name = "javadocURL" value = "${webBaseURL}/${projectPath}/javadoc"/>
-    <property name = "main" value = "edu.ucsb.cs56.projects.games.states_quiz.GameMain"/>
+    <property name = "main" value = "edu.ucsb.cs56.projects.games.states_quiz.GameFrame"/>
     <property name = "jwsDest" value = "${webRoot}/${projectPath}/jws"/>
     <property name = "jwsURL" value = "${webBaseURL}/${projectPath}/jws"/>
     <path id = "project.class.path">
