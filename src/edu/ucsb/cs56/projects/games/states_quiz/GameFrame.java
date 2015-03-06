@@ -30,6 +30,7 @@ public class GameFrame extends JFrame implements ActionListener {
 
         frontPanel.getStateButton().addActionListener(this);
         frontPanel.getCapitalButton().addActionListener(this);
+        frontPanel.getStateThenCapitalButton().addActionListener(this);
 
         this.setResizable(false);
         this.getContentPane().add(gamePanel);
@@ -52,9 +53,12 @@ public class GameFrame extends JFrame implements ActionListener {
             System.out.println("Capitals");
 
         }
-        else {
+        else if (e.getActionCommand().matches("States")){
             questionManager = new StateQuestionManager(gamePanel);
             System.out.println("States");
+        } else {
+            questionManager = new StateThenCapitalQuestionManager(gamePanel);
+            System.out.println("States then Capitals");
         }
 
         questionManager.init();

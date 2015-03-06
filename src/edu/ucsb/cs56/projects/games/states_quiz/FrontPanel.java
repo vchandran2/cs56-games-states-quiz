@@ -13,7 +13,7 @@ public class FrontPanel extends JPanel{
     private JLabel title;
     private JButton stateButton;
     private JButton capitalButton;
-
+    private JButton stateThenCapitalButton;
 
     public FrontPanel(){
 
@@ -38,13 +38,18 @@ public class FrontPanel extends JPanel{
         capitalButton = new JButton("Capitals");
         capitalButton.setFont(new Font("TimesRoman", Font.PLAIN, 30));
 
+        stateThenCapitalButton = new JButton("State then Capitals");
+        stateThenCapitalButton.setFont(new Font("TimesRoman", Font.PLAIN, 30));
+
         title.setBounds(100,80,800,200);
         stateButton.setBounds(340,280,300,100);
         capitalButton.setBounds(340, 400, 300, 100);
+        stateThenCapitalButton.setBounds(340, 520, 300, 100);
 
         this.add(title);
         this.add(stateButton);
         this.add(capitalButton);
+        this.add(stateThenCapitalButton);
 
         this.setVisible(true);
         this.repaint();
@@ -61,4 +66,5 @@ public class FrontPanel extends JPanel{
     public JButton getCapitalButton(){
         return this.capitalButton;
     }
+    public JButton getStateThenCapitalButton() { return this.stateThenCapitalButton; }
 }
