@@ -69,7 +69,7 @@ public class Country {
 
     /**
      * @param numberOfStates represents the number of states in country
-     * @param file represent the file that hold all te states info.
+     * @param file represent the file that hold all the states info.
      */
     public void addStates(int numberOfStates, File file) throws Exception {
         Scanner scanner = new Scanner(file);
