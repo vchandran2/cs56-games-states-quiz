@@ -53,6 +53,7 @@ public class StateThenCapitalQuestionManager extends QuestionManager {
             }
 
         } else {
+            this.guesses++;
             gamePanel.setQuestionTextArea("Nope! ");
         }
 
