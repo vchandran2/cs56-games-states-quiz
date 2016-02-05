@@ -34,8 +34,10 @@ public class CapitalQuestionManager extends QuestionManager {
             randStateIndexes.remove(randIndex);
             randIndex = (int) (Math.random() * (randStateIndexes.size()-1));
             currentQuestion = randStateIndexes.get(randIndex);
-            if (!guesses){
+            if (guesses==0){
                 currentScore++;
+            }
+            else{
                 this.guesses = 0;
             }
         } else {
