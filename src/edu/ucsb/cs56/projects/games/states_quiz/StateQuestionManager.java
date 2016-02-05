@@ -6,6 +6,7 @@ import javax.swing.*;
  * Created by neidler on 2/26/15.
  */
 public class StateQuestionManager extends QuestionManager {
+    int guesses = 0;
     public StateQuestionManager(GamePanel parent) {
         super(parent);
     }
@@ -32,8 +33,14 @@ public class StateQuestionManager extends QuestionManager {
             randStateIndexes.remove(randIndex);
             randIndex = (int) (Math.random() * (randStateIndexes.size()-1));
             currentQuestion = randStateIndexes.get(randIndex);
-            currentScore++;
+            if (guesses==0){
+                currentScore++;
+            }
+            else{
+                this.guesses = 0;
+            }
         } else {
+            guesses++;
             gamePanel.setQuestionTextArea("Nope! ");
         }
 
