@@ -6,6 +6,8 @@ import javax.swing.*;
  * Created by Nick on 3/5/2015.
  */
 public class StateThenCapitalQuestionManager extends QuestionManager {
+    int guesses = 0;
+    
     @Override
     public void askNextQuestion() {
         if(!randStateIndexes.isEmpty()) {
@@ -41,8 +43,12 @@ public class StateThenCapitalQuestionManager extends QuestionManager {
                 randStateIndexes.remove(randIndex);
                 randIndex = (int) (Math.random() * (randStateIndexes.size() - 1));
                 currentQuestion = randStateIndexes.get(randIndex);
-                currentScore++;
+                if (this.guesses == 0)
+                    currentScore++;
+                else
+                    this.guesses = 0;
             } else {
+                this.guesses++;
                 gamePanel.setQuestionTextArea("Capital is incorrect!  Try again!");
             }
 
