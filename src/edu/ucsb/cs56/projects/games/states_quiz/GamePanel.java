@@ -22,9 +22,13 @@ public class GamePanel extends JPanel {
     private JScrollPane questionScrollPane;
     private JTextArea answerTextArea; // text area on right for correct answers
     private JScrollPane answerScrollPane;
+    private JButton hintButton;
     private Font ourFont;
+    static final int SCREEN_WIDTH  = 980;
+    static final int SCREEN_HEIGHT = 680;
 
     public GamePanel() {
+	
         ourFont = new Font("Arial", Font.PLAIN, 24);
         mapPanel = new MapPanel();
 
@@ -46,6 +50,7 @@ public class GamePanel extends JPanel {
         questionTextArea.setEditable(false);
 
         //Set up text area to display answers
+		
         answerTextArea = new JTextArea(20,10);
         answerTextArea.setLineWrap(true);
         answerScrollPane = new JScrollPane(answerTextArea);
@@ -54,16 +59,25 @@ public class GamePanel extends JPanel {
         answerTextArea.setFont(ourFont);
         answerTextArea.append("Correct Answers:\n");
         answerTextArea.setEditable(false);
-
-
-        this.setSize(980, 680);
-
+	
+	hintButton = new JButton();
+	hintButton.setEnabled(true);
+	hintButton.setVisible(false);
+	hintButton.setToolTipText("Click for hint");
+	int hintX = (int) (.6 * SCREEN_WIDTH);
+	int hintY = (int) (.7 * SCREEN_HEIGHT);
+	hintButton.setBounds(hintX, hintY, 50, 50);
+	
+        this.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
+	mapPanel.add(hintButton);
+	
         mapPanel.repaint();
 
         this.setLayout(new BorderLayout());
         this.add(mapPanel,BorderLayout.CENTER);
         this.add(questionScrollPane,BorderLayout.SOUTH);
         this.add(answerScrollPane,BorderLayout.EAST);
+
         this.setVisible(false);
         this.repaint();
     }
