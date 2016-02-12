@@ -60,13 +60,13 @@ public class GamePanel extends JPanel {
         answerTextArea.append("Correct Answers:\n");
         answerTextArea.setEditable(false);
 	
-	hintButton = new JButton();
+	hintButton = new JButton("Click For Hint");
 	hintButton.setEnabled(true);
 	hintButton.setVisible(false);
-	hintButton.setToolTipText("Click for hint");
-	int hintX = (int) (.6 * SCREEN_WIDTH);
+	//	hintButton.setToolTipText("Click for hint");
+	int hintX = (int) (.57 * SCREEN_WIDTH);
 	int hintY = (int) (.7 * SCREEN_HEIGHT);
-	hintButton.setBounds(hintX, hintY, 50, 50);
+	hintButton.setBounds(hintX, hintY, 150, 50);
 	
         this.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
 	mapPanel.add(hintButton);
@@ -82,13 +82,17 @@ public class GamePanel extends JPanel {
         this.repaint();
     }
 
+    public void setHintButton(Boolean b) {
+	hintButton.setVisible(b);
+    }
+    
     /**
      * @return questionTextArea the Text Area with questions
      */
     public JTextArea getQuestionTextArea() {
         return this.questionTextArea;
     }
-
+    
     /**
      * Adds text to the questionTextArea.
      * @param txt

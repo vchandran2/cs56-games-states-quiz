@@ -43,12 +43,18 @@ public class StateThenCapitalQuestionManager extends QuestionManager {
                 randStateIndexes.remove(randIndex);
                 randIndex = (int) (Math.random() * (randStateIndexes.size() - 1));
                 currentQuestion = randStateIndexes.get(randIndex);
-                if (this.guesses == 0)
+
+		gamePanel.setHintButton(false);
+		
+		if (this.guesses == 0)
                     currentScore++;
                 else
                     this.guesses = 0;
             } else {
                 this.guesses++;
+		if (guesses == 3)
+		    gamePanel.setHintButton(true);
+		
                 gamePanel.setQuestionTextArea("Capital is incorrect!  Try again!");
             }
 
