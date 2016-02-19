@@ -35,7 +35,7 @@ public class CapitalQuestionManager extends QuestionManager {
             randIndex = (int) (Math.random() * (randStateIndexes.size()-1));
             currentQuestion = randStateIndexes.get(randIndex);
 
-	    gamePanel.setHintButton(false);
+	    gamePanel.setHintButtonVisible(false);
 
 	    if (guesses==0){
                 currentScore++;
@@ -46,7 +46,7 @@ public class CapitalQuestionManager extends QuestionManager {
         } else {
             this.guesses++;
 	    if (guesses == 3)
-		gamePanel.setHintButton(true);
+		gamePanel.setHintButtonVisible(true);
 	    
             gamePanel.setQuestionTextArea("Nope! ");
         }

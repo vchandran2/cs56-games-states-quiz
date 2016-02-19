@@ -34,7 +34,7 @@ public class StateQuestionManager extends QuestionManager {
             randIndex = (int) (Math.random() * (randStateIndexes.size()-1));
             currentQuestion = randStateIndexes.get(randIndex);
 
-	    gamePanel.setHintButton(false);
+	    gamePanel.setHintButtonVisible(false);
 	    
 	    if (guesses==0){
                 currentScore++;
@@ -45,7 +45,7 @@ public class StateQuestionManager extends QuestionManager {
         } else {
             guesses++;
 	    if (guesses == 3)
-		gamePanel.setHintButton(true);
+		gamePanel.setHintButtonVisible(true);
 	    
             gamePanel.setQuestionTextArea("Nope! ");
         }

@@ -64,6 +64,10 @@ public abstract class QuestionManager {
         this.receiveAnswer(((JButton) o));
     }
 
+    public State getCorrectState(){
+	return this.states.get(currentQuestion);
+    }
+
     /**
      * Asks the next question if the question counter is less than 50. Prints
      * out the current state.

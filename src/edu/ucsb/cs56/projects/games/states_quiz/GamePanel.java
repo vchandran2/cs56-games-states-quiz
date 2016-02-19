@@ -88,10 +88,13 @@ public class GamePanel extends JPanel implements ActionListener {
     }
     
     public void actionPerformed(ActionEvent event) {
-	hintButton.setText("Clicked");
+	State state = mapPanel.getQuestionManager().getCorrectState();
+	hintButton.setText(this.getStateQuadrant(state.getXCoord(), state.getYCoord()));
     }
     
-    public void setHintButton(Boolean b) {
+    public void setHintButtonVisible(Boolean b) {
+	if (!b)
+	    hintButton.setText("Click For Hint");
 	hintButton.setVisible(b);
     }
     
