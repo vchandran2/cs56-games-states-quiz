@@ -28,6 +28,9 @@ public class GamePanel extends JPanel implements ActionListener {
     private Font ourFont;
     static final int SCREEN_WIDTH  = 980;
     static final int SCREEN_HEIGHT = 680;
+    static final int MAP_X_BOUND   = (int) (.75 * SCREEN_WIDTH);
+    static final int MAP_Y_BOUND   = (int) (.7 * SCREEN_HEIGHT);
+
 
     public GamePanel() {
 	
@@ -126,5 +129,29 @@ public class GamePanel extends JPanel implements ActionListener {
      */
     public MapPanel getMapPanel() {
         return this.mapPanel;
+    }
+
+    /**
+     * @param x x value of state
+     * @param y y value of state
+     * @return String with quadrant (north-south/east-west) of state
+     */
+    public String getStateQuadrant(int x, int y){
+	String quadrant = "";
+	//Decide north or south
+	if (y <= MAP_Y_BOUND/2){
+	    quadrant += "North";
+	}
+	else{
+	    quadrant += "South";
+	}
+	//Decide east or west
+	if (x <= MAP_X_BOUND/2){
+	    quadrant += "west";
+	}
+	else{
+	    quadrant += "east";
+	}
+	return quadrant;
     }
 }
