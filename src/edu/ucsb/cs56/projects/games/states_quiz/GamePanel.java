@@ -4,6 +4,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.AdjustmentEvent;
 import java.awt.event.AdjustmentListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  * GamePanel sets up the GamePanel with the frame that holds the text for questions and answers and the scrollbar.
@@ -14,7 +16,7 @@ import java.awt.event.AdjustmentListener;
  */
 
 
-public class GamePanel extends JPanel {
+public class GamePanel extends JPanel implements ActionListener {
 
     private MapPanel mapPanel; // mapPanel is a MapPanel reference
     private JPanel panel;
@@ -63,10 +65,10 @@ public class GamePanel extends JPanel {
 	hintButton = new JButton("Click For Hint");
 	hintButton.setEnabled(true);
 	hintButton.setVisible(false);
-	//	hintButton.setToolTipText("Click for hint");
 	int hintX = (int) (.57 * SCREEN_WIDTH);
 	int hintY = (int) (.7 * SCREEN_HEIGHT);
 	hintButton.setBounds(hintX, hintY, 150, 50);
+	hintButton.addActionListener(this);
 	
         this.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
 	mapPanel.add(hintButton);
@@ -81,7 +83,11 @@ public class GamePanel extends JPanel {
         this.setVisible(false);
         this.repaint();
     }
-
+    
+    public void actionPerformed(ActionEvent event) {
+	hintButton.setText("Clicked");
+    }
+    
     public void setHintButton(Boolean b) {
 	hintButton.setVisible(b);
     }
