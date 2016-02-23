@@ -11,6 +11,7 @@ import java.io.IOException;
 public class FrontPanel extends JPanel{
     private BufferedImage map;
     private JLabel title;
+    private JLabel diffHeader;
     private JButton stateButton;
     private JButton capitalButton;
     private JButton stateThenCapitalButton;
@@ -44,6 +45,10 @@ public class FrontPanel extends JPanel{
         stateThenCapitalButton = new JButton("State then Capitals");
         stateThenCapitalButton.setFont(new Font("TimesRoman", Font.PLAIN, 30));
 
+	diffHeader = new JLabel("Select difficulty:", JLabel.CENTER);
+	Font diffHeaderFont = new Font("TimesRoman", Font.PLAIN, 30);
+	diffHeader.setFont(diffHeaderFont);
+	
 	easyButton   = new JRadioButton("Easy");
 	normalButton = new JRadioButton("Normal");
 	hardButton   = new JRadioButton("Hard");
@@ -67,6 +72,7 @@ public class FrontPanel extends JPanel{
         capitalButton.setBounds(340, 400, 300, 100);
         stateThenCapitalButton.setBounds(340, 520, 300, 100);
 
+	diffHeader.setBounds(500, 200, 600, 200);
 	easyButton.setBounds(700, 300, 80, 80);
 	normalButton.setBounds(700, 350, 80, 80);
 	hardButton.setBounds(700, 400, 80, 80);
@@ -76,6 +82,7 @@ public class FrontPanel extends JPanel{
         this.add(capitalButton);
         this.add(stateThenCapitalButton);
 
+	this.add(diffHeader);
 	this.add(easyButton);
 	this.add(normalButton);
 	this.add(hardButton);
