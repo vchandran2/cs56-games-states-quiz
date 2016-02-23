@@ -25,7 +25,6 @@ public class StateQuestionManager extends QuestionManager {
     @Override
     public void receiveAnswer(JButton answerButton) {
         if (answerButton == mapPanel.stateButtons[currentQuestion]) {
-	    gamePanel.getQuestionTextArea().setText("Congrats! ");
             gamePanel.setAnswerTextArea(states.get(currentQuestion).getName());
 
             correctStates.add(states.get(currentQuestion));
@@ -39,9 +38,10 @@ public class StateQuestionManager extends QuestionManager {
 	    }
 	    
             randStateIndexes.remove(randIndex);
-            randIndex = (int) (Math.random() * (randStateIndexes.size()-1));
-            currentQuestion = randStateIndexes.get(randIndex);
-
+	    if (!randStateIndexes.isEmpty()) {
+		randIndex = (int) (Math.random() * (randStateIndexes.size()-1));
+		currentQuestion = randStateIndexes.get(randIndex);
+	    }
 	    gamePanel.setHintButtonVisible(false);
 	    
 	    if (guesses==0){
@@ -50,6 +50,7 @@ public class StateQuestionManager extends QuestionManager {
             else{
                 this.guesses = 0;
 	    }
+	    gamePanel.getQuestionTextArea().setText("Congrats! ");
 	    gamePanel.setQuestionTextArea("Your current score is: " + currentScore + "\n");
 	    this.askNextQuestion();
         } else {

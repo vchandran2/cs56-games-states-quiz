@@ -40,8 +40,10 @@ public class CapitalQuestionManager extends QuestionManager {
 	    }
 	    
             randStateIndexes.remove(randIndex);
-            randIndex = (int) (Math.random() * (randStateIndexes.size()-1));
-            currentQuestion = randStateIndexes.get(randIndex);
+	    if (!randStateIndexes.isEmpty()) {
+		randIndex = (int) (Math.random() * (randStateIndexes.size()-1));
+		currentQuestion = randStateIndexes.get(randIndex);
+	    }
 
 	    gamePanel.setHintButtonVisible(false);
 

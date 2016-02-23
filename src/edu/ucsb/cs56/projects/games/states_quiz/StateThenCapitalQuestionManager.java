@@ -61,9 +61,10 @@ public class StateThenCapitalQuestionManager extends QuestionManager {
 	    }
 	    
 	    randStateIndexes.remove(randIndex);
-	    randIndex = (int) (Math.random() * (randStateIndexes.size() - 1));
-	    currentQuestion = randStateIndexes.get(randIndex);
-	    
+	    if (!randStateIndexes.isEmpty()){
+		randIndex = (int) (Math.random() * (randStateIndexes.size() - 1));
+		currentQuestion = randStateIndexes.get(randIndex);
+	    }
 	    gamePanel.setHintButtonVisible(false);
 	    
 	    if (this.guesses == 0)
