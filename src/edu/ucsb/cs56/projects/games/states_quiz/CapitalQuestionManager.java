@@ -26,7 +26,7 @@ public class CapitalQuestionManager extends QuestionManager {
     @Override
     public void receiveAnswer(JButton answerButton) {
         if (answerButton == mapPanel.stateButtons[currentQuestion]) {
-            gamePanel.setQuestionTextArea("Congrats! ");
+            gamePanel.getQuestionTextArea().setText("Congrats! ");
             gamePanel.setAnswerTextArea(states.get(currentQuestion).getCapital());
 
             correctStates.add(states.get(currentQuestion));
@@ -51,6 +51,8 @@ public class CapitalQuestionManager extends QuestionManager {
             else{
                 this.guesses = 0;
             }
+	    gamePanel.setQuestionTextArea("Your current score is: " + currentScore + "\n");
+	    this.askNextQuestion();
         } else {
 	    if (this.getDifficulty() != "Hard"){
 		answerButton.setVisible(false);
@@ -61,9 +63,8 @@ public class CapitalQuestionManager extends QuestionManager {
 		gamePanel.setHintButtonVisible(true);
 	    
             gamePanel.setQuestionTextArea("Nope! ");
-        }
 
-        gamePanel.setQuestionTextArea("Your current score is: " + currentScore + "\n");
-        this.askNextQuestion();
+	    this.repeatQuestion();
+	}
     }
 }

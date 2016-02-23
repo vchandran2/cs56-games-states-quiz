@@ -86,6 +86,13 @@ public abstract class QuestionManager {
     public abstract void askNextQuestion();
 
     /**
+     * If the answer given was wrong, reasks the question without re-printing
+     */
+    public void repeatQuestion() {
+	mapPanel.setAnswer(mapPanel.stateButtons[currentQuestion]);
+    }
+    
+    /**
      * Receives the answer from MapPanel and checks to see if the answer is
      * equivalent to the current state. Prints out the current score and
      * increments the counters.
