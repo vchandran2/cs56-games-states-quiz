@@ -13,7 +13,7 @@ public class StateQuestionManager extends QuestionManager {
 
     @Override
     public void askNextQuestion() {
-        if(!randStateIndexes.isEmpty()) {
+	if(!randStateIndexes.isEmpty()) {
             gamePanel.setQuestionTextArea("Click on: " + states.get(currentQuestion).getName() + "\n");
             mapPanel.setAnswer(mapPanel.stateButtons[currentQuestion]);
         }
@@ -33,6 +33,10 @@ public class StateQuestionManager extends QuestionManager {
 	    for (JButton button : this.hiddenButtons){
 		button.setVisible(true);
 	    }
+
+	    if (this.getDifficulty() == "Easy"){
+		answerButton.setVisible(false);
+	    }
 	    
             randStateIndexes.remove(randIndex);
             randIndex = (int) (Math.random() * (randStateIndexes.size()-1));
@@ -48,8 +52,8 @@ public class StateQuestionManager extends QuestionManager {
             }
         } else {
 	    if (this.getDifficulty() != "Hard"){
-	    answerButton.setVisible(false);
-	    this.hiddenButtons.add(answerButton);
+		answerButton.setVisible(false);
+		this.hiddenButtons.add(answerButton);
 	    }
             guesses++;
 	    if (guesses == 3)

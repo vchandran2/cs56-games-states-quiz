@@ -41,7 +41,15 @@ public class StateThenCapitalQuestionManager extends QuestionManager {
 
                 correctStates.add(states.get(currentQuestion));
 
-                randStateIndexes.remove(randIndex);
+		for (JButton button : this.hiddenButtons) {
+		    button.setVisible(true);
+		}
+
+		if (this.getDifficulty() == "Easy") {
+		    answerButton.setVisible(false);
+		}
+		
+		randStateIndexes.remove(randIndex);
                 randIndex = (int) (Math.random() * (randStateIndexes.size() - 1));
                 currentQuestion = randStateIndexes.get(randIndex);
 
@@ -60,6 +68,10 @@ public class StateThenCapitalQuestionManager extends QuestionManager {
             }
 
         } else {
+	    if (this.getDifficulty() != "Hard") {
+		answerButton.setVisible(false);
+		this.hiddenButtons.add(answerButton);
+	    }
             this.guesses++;
             gamePanel.setQuestionTextArea("Nope! ");
         }
