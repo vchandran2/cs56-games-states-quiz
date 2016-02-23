@@ -25,6 +25,7 @@ public abstract class QuestionManager {
     protected ArrayList<State> states;
     protected ArrayList<Integer> randStateIndexes;
     protected ArrayList<State> correctStates;
+    protected ArrayList<JButton> hiddenButtons;
 
 
     /**
@@ -34,6 +35,7 @@ public abstract class QuestionManager {
         states = new ArrayList<State>();
         correctStates = new ArrayList<State>();
         randStateIndexes = new ArrayList<Integer>();
+	hiddenButtons = new ArrayList<JButton>();
 
         gamePanel = parent;
         mapPanel = gamePanel.getMapPanel();

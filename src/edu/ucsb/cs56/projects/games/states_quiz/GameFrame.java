@@ -58,7 +58,7 @@ public class GameFrame extends JFrame implements ActionListener {
 	    questionManager = new StateQuestionManager(gamePanel);
             System.out.println("States");
         }
-	else if (e.getActionCommand().matches("States then Capitals")){
+	else if (e.getActionCommand().matches("State then Capitals")){
 	    questionManager = new StateThenCapitalQuestionManager(gamePanel);
 	    System.out.println("States then Capitals");
         }

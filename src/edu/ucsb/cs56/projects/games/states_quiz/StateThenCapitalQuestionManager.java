@@ -1,6 +1,7 @@
 package edu.ucsb.cs56.projects.games.states_quiz;
 
 import javax.swing.*;
+import java.util.ArrayList;
 
 /**
  * Created by Nick on 3/5/2015.
@@ -51,7 +52,7 @@ public class StateThenCapitalQuestionManager extends QuestionManager {
                 else
                     this.guesses = 0;
             } else {
-                this.guesses++;
+	        this.guesses++;
 		if (guesses == 3)
 		    gamePanel.setHintButtonVisible(true);
 		

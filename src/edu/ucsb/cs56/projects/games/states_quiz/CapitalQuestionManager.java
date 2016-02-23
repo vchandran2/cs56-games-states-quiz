@@ -1,7 +1,7 @@
 package edu.ucsb.cs56.projects.games.states_quiz;
 
 import javax.swing.*;
-
+import java.util.ArrayList;
 /**
  * Created by neidler on 2/26/15.
  */
@@ -31,6 +31,10 @@ public class CapitalQuestionManager extends QuestionManager {
 
             correctStates.add(states.get(currentQuestion));
 
+	    for (JButton button: this.hiddenButtons){
+		button.setVisible(true);
+	    }
+	    
             randStateIndexes.remove(randIndex);
             randIndex = (int) (Math.random() * (randStateIndexes.size()-1));
             currentQuestion = randStateIndexes.get(randIndex);
@@ -44,6 +48,10 @@ public class CapitalQuestionManager extends QuestionManager {
                 this.guesses = 0;
             }
         } else {
+	    if (this.getDifficulty() != "Hard"){
+	    answerButton.setVisible(false);
+	    this.hiddenButtons.add(answerButton);
+	    }
             this.guesses++;
 	    if (guesses == 3)
 		gamePanel.setHintButtonVisible(true);

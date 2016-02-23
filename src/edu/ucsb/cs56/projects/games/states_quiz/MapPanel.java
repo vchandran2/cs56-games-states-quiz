@@ -72,7 +72,7 @@ public class MapPanel extends JPanel implements ActionListener {
 
             x = statesArray.get(i).getXCoord();
             y = statesArray.get(i).getYCoord();
-
+	    
             stateButtons[i].setBounds(x, y, width, height);
             stateButtons[i].addActionListener(this);
         }
