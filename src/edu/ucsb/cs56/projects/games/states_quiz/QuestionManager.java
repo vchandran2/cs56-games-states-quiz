@@ -16,6 +16,7 @@ public abstract class QuestionManager {
     protected GamePanel gamePanel;
     protected MapPanel mapPanel;
 
+    protected String difficulty;
     protected String option;
     protected int currentQuestion;
     protected int randIndex;
@@ -66,6 +67,14 @@ public abstract class QuestionManager {
 
     public State getCorrectState(){
 	return this.states.get(currentQuestion);
+    }
+
+    public String getDifficulty(){
+	return this.difficulty;
+    }
+
+    public void setDifficulty(String diff){
+	this.difficulty = diff;
     }
 
     /**
