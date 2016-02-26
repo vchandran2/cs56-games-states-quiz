@@ -66,6 +66,5 @@ public class StateQuestionManager extends QuestionManager {
 
 	    this.repeatQuestion();
 	}
-	//        this.askNextQuestion();
     }
 }

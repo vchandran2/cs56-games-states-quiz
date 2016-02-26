@@ -42,7 +42,7 @@ public class FrontPanel extends JPanel{
         capitalButton = new JButton("Capitals");
         capitalButton.setFont(new Font("TimesRoman", Font.PLAIN, 30));
 
-        stateThenCapitalButton = new JButton("States then Capitals");
+        stateThenCapitalButton = new JButton("State then Capitals");
         stateThenCapitalButton.setFont(new Font("TimesRoman", Font.PLAIN, 30));
 
 	diffHeader = new JLabel("Select difficulty:", JLabel.CENTER);
@@ -92,7 +92,7 @@ public class FrontPanel extends JPanel{
     }
 
     public void paintComponent(Graphics g) {
-        g.drawImage(map, 0, 0, 880, 680, this); //Original (map, 0, 0, 980, 680, this)
+        g.drawImage(map, 0, 0, 980, 680, this);
     }
 
     public JButton getStateButton(){
