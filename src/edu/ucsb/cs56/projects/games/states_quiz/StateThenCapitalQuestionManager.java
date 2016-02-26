@@ -25,7 +25,8 @@ public class StateThenCapitalQuestionManager extends QuestionManager {
     }
 
     private boolean askCapital() {
-        String s = JOptionPane.showInputDialog(gamePanel.getParent(), "Enter the capital of " + states.get(currentQuestion).getName() + ":", "Capital Input", JOptionPane.PLAIN_MESSAGE);
+	String s = "";
+        s = JOptionPane.showInputDialog(gamePanel.getParent(), "Enter the capital of " + states.get(currentQuestion).getName() + ":", "Capital Input", JOptionPane.PLAIN_MESSAGE);
         if (s.equals(states.get(currentQuestion).getCapital()))
             return true;
         else

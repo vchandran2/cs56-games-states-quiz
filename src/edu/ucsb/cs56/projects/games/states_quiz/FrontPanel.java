@@ -36,14 +36,15 @@ public class FrontPanel extends JPanel{
         Font titleFont = new Font("TimesRoman",Font.PLAIN,50);
         title.setFont(titleFont);
 
+	Font modeFont = new Font("TimesRoman", Font.PLAIN, 25);
         stateButton = new JButton("States");
-        stateButton.setFont(new Font("TimesRoman",Font.PLAIN,30));
+        stateButton.setFont(modeFont);
 
         capitalButton = new JButton("Capitals");
-        capitalButton.setFont(new Font("TimesRoman", Font.PLAIN, 30));
+        capitalButton.setFont(modeFont);
 
         stateThenCapitalButton = new JButton("State then Capitals");
-        stateThenCapitalButton.setFont(new Font("TimesRoman", Font.PLAIN, 30));
+    stateThenCapitalButton.setFont(modeFont);
 
 	diffHeader = new JLabel("Select difficulty:", JLabel.CENTER);
 	Font diffHeaderFont = new Font("TimesRoman", Font.PLAIN, 20);

@@ -49,7 +49,8 @@ public class GameFrame extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e){
 	frontPanel.setVisible(false);
 	gamePanel.setVisible(true);
-	
+
+	System.out.println(e.getActionCommand());
         if(e.getActionCommand().matches("Capitals")){
             questionManager = new CapitalQuestionManager(gamePanel);
             System.out.println("Capitals");
