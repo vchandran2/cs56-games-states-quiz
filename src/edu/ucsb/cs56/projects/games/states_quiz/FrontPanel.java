@@ -32,7 +32,7 @@ public class FrontPanel extends JPanel{
 
         assert (map != null);
 
-        title = new JLabel("Welcome to Country Quiz!",JLabel.CENTER);
+        title = new JLabel("Welcome to the Country Quiz!",JLabel.CENTER);
         Font titleFont = new Font("TimesRoman",Font.PLAIN,50);
         title.setFont(titleFont);
 
@@ -42,11 +42,11 @@ public class FrontPanel extends JPanel{
         capitalButton = new JButton("Capitals");
         capitalButton.setFont(new Font("TimesRoman", Font.PLAIN, 30));
 
-        stateThenCapitalButton = new JButton("State then Capitals");
+        stateThenCapitalButton = new JButton("States then Capitals");
         stateThenCapitalButton.setFont(new Font("TimesRoman", Font.PLAIN, 30));
 
 	diffHeader = new JLabel("Select difficulty:", JLabel.CENTER);
-	Font diffHeaderFont = new Font("TimesRoman", Font.PLAIN, 30);
+	Font diffHeaderFont = new Font("TimesRoman", Font.PLAIN, 20);
 	diffHeader.setFont(diffHeaderFont);
 	
 	easyButton   = new JRadioButton("Easy");
@@ -72,7 +72,7 @@ public class FrontPanel extends JPanel{
         capitalButton.setBounds(340, 400, 300, 100);
         stateThenCapitalButton.setBounds(340, 520, 300, 100);
 
-	diffHeader.setBounds(500, 200, 600, 200);
+	diffHeader.setBounds(450, 200, 600, 200);
 	easyButton.setBounds(700, 300, 80, 80);
 	normalButton.setBounds(700, 350, 80, 80);
 	hardButton.setBounds(700, 400, 80, 80);
@@ -92,8 +92,7 @@ public class FrontPanel extends JPanel{
     }
 
     public void paintComponent(Graphics g) {
-        g.drawImage(map, 0, 0,980,680, this);
-
+        g.drawImage(map, 0, 0, 880, 680, this); //Original (map, 0, 0, 980, 680, this)
     }
 
     public JButton getStateButton(){

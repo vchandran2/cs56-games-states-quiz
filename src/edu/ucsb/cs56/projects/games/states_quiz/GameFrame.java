@@ -53,14 +53,17 @@ public class GameFrame extends JFrame implements ActionListener {
         if(e.getActionCommand().matches("Capitals")){
             questionManager = new CapitalQuestionManager(gamePanel);
             System.out.println("Capitals");
-        }
+	    this.setTitle("Capitals");
+	}
         else if (e.getActionCommand().matches("States")){
 	    questionManager = new StateQuestionManager(gamePanel);
             System.out.println("States");
+	    this.setTitle("States");
         }
 	else if (e.getActionCommand().matches("State then Capitals")){
 	    questionManager = new StateThenCapitalQuestionManager(gamePanel);
 	    System.out.println("States then Capitals");
+	    this.setTitle("States then Capitals");
         }
 	ButtonModel selectedDiff = frontPanel.getDifficultiesGroup().getSelection();
 	questionManager.init();
