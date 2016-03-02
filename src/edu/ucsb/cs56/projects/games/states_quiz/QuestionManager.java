@@ -12,16 +12,18 @@ import java.util.ArrayList;
  * @author Nick Eidler
  */
 
-public abstract class QuestionManager {
+public class QuestionManager {
     protected GamePanel gamePanel;
     protected MapPanel mapPanel;
 
+    protected String gameMode;
     protected String difficulty;
     protected String option;
     protected int currentQuestion;
     protected int randIndex;
     protected int currentScore;
-
+    protected int guesses = 0;
+    
     protected ArrayList<State> states;
     protected ArrayList<Integer> randStateIndexes;
     protected ArrayList<State> correctStates;
@@ -83,20 +85,102 @@ public abstract class QuestionManager {
      * Asks the next question if the question counter is less than 50. Prints
      * out the current state.
      */
-    public abstract void askNextQuestion();
-
+    public void askNextQuestion(){
+	if(!randStateIndexes.isEmpty()) {
+	    if (this.gameMode == "Capitals")
+		gamePanel.setQuestionTextArea("Click on: " + states.get(currentQuestion).getCapital() + "\n");
+	    else
+		gamePanel.setQuestionTextArea("Click on: " + states.get(currentQuestion).getName() + "\n");
+	    mapPanel.setAnswer(mapPanel.stateButtons[currentQuestion]);
+	}
+	else {
+	    gamePanel.setQuestionTextArea("You're finished! Yay!");
+	}
+    }
+    
     /**
      * If the answer given was wrong, reasks the question without re-printing
      */
     public void repeatQuestion() {
 	mapPanel.setAnswer(mapPanel.stateButtons[currentQuestion]);
-    }
+    }        
     
     /**
      * Receives the answer from MapPanel and checks to see if the answer is
      * equivalent to the current state. Prints out the current score and
      * increments the counters.
      */
-    public abstract void receiveAnswer(JButton answerButton);
+    public  void receiveAnswer(JButton answerButton){
+	if (answerButton == mapPanel.stateButtons[currentQuestion]) {
+	    if (this.gameMode == "States then Capitals") {
+		checkCapital();
+	    }
+	    gamePanel.setAnswerTextArea(states.get(currentQuestion).getName());
+	    gamePanel.getQuestionTextArea().setText("Congrats! ");
 
+	    correctStates.add(states.get(currentQuestion));
+
+	    for (JButton button : this.hiddenButtons) {
+		button.setVisible(true);
+	    }
+
+	    if (this.getDifficulty() == "Easy") {
+		answerButton.setVisible(false);
+	    }
+
+	    randStateIndexes.remove(randIndex);
+	    if (!randStateIndexes.isEmpty()) {
+		randIndex = (int) (Math.random() * (randStateIndexes.size()-1));
+		currentQuestion = randStateIndexes.get(randIndex);
+	    }
+
+	    gamePanel.setHintButtonVisible(false);
+
+	    if (guesses == 0)
+		currentScore++;
+	    else
+		this.guesses = 0;
+	    gamePanel.setQuestionTextArea("Your current score is: " + currentScore + "\n");
+	    this.askNextQuestion();
+	}
+	else {
+	    if (this.getDifficulty() != "Hard"){
+		answerButton.setVisible(false);
+		this.hiddenButtons.add(answerButton);
+	    }
+	    guesses++;
+	    if (guesses == 3)
+		gamePanel.setHintButtonVisible(true);
+
+	    gamePanel.setQuestionTextArea("Nope!");
+
+	    this.repeatQuestion();
+	}
+    }
+
+    private void checkCapital(){
+	boolean answer = askCapital();
+	while (!answer){
+	    gamePanel.setQuestionTextArea("Capital is Incorrect! ");
+	    answer = askCapital();
+	    this.guesses++;
+	}
+    }
+
+    private boolean askCapital(){
+	String s = JOptionPane.showInputDialog(gamePanel.getParent(), "Enter the capital of " + states.get(currentQuestion).getName() + ":", "Capital Input", JOptionPane.PLAIN_MESSAGE);
+	if (s.equals(states.get(currentQuestion).getCapital()))
+	    return true;
+	else
+	    return false;
+    }
+    
+    public void setGameMode(String mode){
+	this.gameMode = mode;
+    }
+    
+    public String getGameMode(){
+	return this.gameMode;
+    }
+    
 }

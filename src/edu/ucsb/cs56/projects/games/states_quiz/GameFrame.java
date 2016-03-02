@@ -20,7 +20,6 @@ public class GameFrame extends JFrame implements ActionListener {
     private FrontPanel frontPanel;
     private QuestionManager questionManager;
     
-    
     public static void main(String[] args) {
         new GameFrame();
     }
@@ -49,20 +48,20 @@ public class GameFrame extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e){
 	frontPanel.setVisible(false);
 	gamePanel.setVisible(true);
-
-	System.out.println(e.getActionCommand());
+	questionManager = new QuestionManager(gamePanel);
+	
         if(e.getActionCommand().matches("Capitals")){
-            questionManager = new CapitalQuestionManager(gamePanel);
-            System.out.println("Capitals");
+	    questionManager.setGameMode("Capitals");
+	    System.out.println("Capitals");
 	    this.setTitle("Capitals");
 	}
         else if (e.getActionCommand().matches("States")){
-	    questionManager = new StateQuestionManager(gamePanel);
+	    questionManager.setGameMode("States");
             System.out.println("States");
 	    this.setTitle("States");
         }
 	else if (e.getActionCommand().matches("State then Capitals")){
-	    questionManager = new StateThenCapitalQuestionManager(gamePanel);
+	    questionManager.setGameMode("States then Capitals");
 	    System.out.println("States then Capitals");
 	    this.setTitle("States then Capitals");
         }
