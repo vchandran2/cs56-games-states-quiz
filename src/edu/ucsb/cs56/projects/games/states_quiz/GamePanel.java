@@ -64,14 +64,10 @@ public class GamePanel extends JPanel implements ActionListener {
         answerTextArea.setFont(ourFont);
         answerTextArea.append("Correct Answers:\n");
         answerTextArea.setEditable(false);
-	
-	hintButton = new JButton("Click For Hint");
-	hintButton.setEnabled(true);
-	hintButton.setVisible(false);
+
 	int hintX = (int) (.57 * SCREEN_WIDTH);
 	int hintY = (int) (.7 * SCREEN_HEIGHT);
-	hintButton.setBounds(hintX, hintY, 150, 50);
-	hintButton.addActionListener(this);
+	hintButton = this.generateHintButton(hintX, hintY, 150, 50, "Click For Hint");
 	
         this.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
 	mapPanel.add(hintButton);
@@ -91,6 +87,25 @@ public class GamePanel extends JPanel implements ActionListener {
 	State state = mapPanel.getQuestionManager().getCorrectState();
 	hintButton.setText(this.getStateQuadrant(state.getXCoord(), state.getYCoord()));
     }
+
+    /**
+     * @param x x coord of hintButton
+     * @param y y coord of hintButton
+     * @param w width of hintButton
+     * @param h height of hintButton
+     * @param text hintButton display text
+     * @return a newly generated hintButton with the specified x/y/text values
+     */
+    
+    private JButton generateHintButton(int x, int y, int w, int h, String text){
+        JButton hintButton = new JButton(text);
+	hintButton.setEnabled(true);
+	hintButton.setVisible(false);
+	hintButton.setBounds(x, y, w, h);
+	hintButton.addActionListener(this);
+
+	return hintButton;
+    }
     
     public void setHintButtonVisible(Boolean b) {
 	if (!b)
@@ -107,10 +122,10 @@ public class GamePanel extends JPanel implements ActionListener {
     
     /**
      * Adds text to the questionTextArea.
-     * @param txt
+     * @param text the text to append to the question area
      */
-    public void setQuestionTextArea(String txt) {
-        this.questionTextArea.append(txt);
+    public void setQuestionTextArea(String text) {
+        this.questionTextArea.append(text);
     }
 
     /**

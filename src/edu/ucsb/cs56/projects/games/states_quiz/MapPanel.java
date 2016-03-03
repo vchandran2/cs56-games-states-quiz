@@ -63,7 +63,6 @@ public class MapPanel extends JPanel implements ActionListener {
             e.printStackTrace();
         }
 
-//        statesArray = new ArrayList<State>();
         statesArray = c.getStatesArray();
 
         for (int i = 0; i < statesArray.size(); i++) {
@@ -97,7 +96,7 @@ public class MapPanel extends JPanel implements ActionListener {
     /**
      * @param button button that was clicked by a user
      */
-
+    
     public void setAnswer(JButton button) {
         this.answer = button;
     }
