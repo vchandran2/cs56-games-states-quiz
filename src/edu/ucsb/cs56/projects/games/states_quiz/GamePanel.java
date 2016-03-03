@@ -18,11 +18,11 @@ import java.awt.event.ActionListener;
 
 public class GamePanel extends JPanel implements ActionListener {
 
-    private MapPanel mapPanel; // mapPanel is a MapPanel reference
+    private MapPanel mapPanel;
     private JPanel panel;
     private JTextArea questionTextArea; // text area on bottom where question displays
-    private JScrollPane questionScrollPane;
     private JTextArea answerTextArea; // text area on right for correct answers
+    private JScrollPane questionScrollPane;
     private JScrollPane answerScrollPane;
     private JButton hintButton;
     private Font ourFont;
@@ -37,47 +37,26 @@ public class GamePanel extends JPanel implements ActionListener {
         ourFont = new Font("Arial", Font.PLAIN, 24);
         mapPanel = new MapPanel();
 
-        //Setting up the text area to display questions
-        questionTextArea = new JTextArea(4, 20);
-        questionTextArea.setLineWrap(true);
-
-        questionScrollPane = new JScrollPane(questionTextArea);
-        questionScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-        questionScrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        questionScrollPane.getVerticalScrollBar().addAdjustmentListener(new AdjustmentListener(){
-            public void adjustmentValueChanged(AdjustmentEvent e) {
-                e.getAdjustable().setValue(e.getAdjustable().getMaximum());
-            }
-        });
-
-        questionTextArea.setFont(ourFont);
-        questionTextArea.append("Welcome to the USA map quiz!\n");
-        questionTextArea.setEditable(false);
-
-        //Set up text area to display answers
-		
-        answerTextArea = new JTextArea(20,10);
-        answerTextArea.setLineWrap(true);
-        answerScrollPane = new JScrollPane(answerTextArea);
-        answerScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-        answerScrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        answerTextArea.setFont(ourFont);
-        answerTextArea.append("Correct Answers:\n");
-        answerTextArea.setEditable(false);
-
+        String questionText = "Welcome to the USA map quiz!\n";
+	String answerText   = "Correct Answers:\n";
+	
+	questionTextArea = this.generateQuestionTextArea(4, 20,  ourFont, questionText);
+	answerTextArea   = this.generateAnswerTextArea(20, 10, ourFont, answerText);
+	
 	int hintX = (int) (.57 * SCREEN_WIDTH);
 	int hintY = (int) (.7 * SCREEN_HEIGHT);
 	hintButton = this.generateHintButton(hintX, hintY, 150, 50, "Click For Hint");
-	
-        this.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
 	mapPanel.add(hintButton);
 	
+        this.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
+		
         mapPanel.repaint();
 
         this.setLayout(new BorderLayout());
         this.add(mapPanel,BorderLayout.CENTER);
-        this.add(questionScrollPane,BorderLayout.SOUTH);
-        this.add(answerScrollPane,BorderLayout.EAST);
+	
+	this.add(questionScrollPane, BorderLayout.SOUTH);
+	this.add(answerScrollPane,   BorderLayout.EAST);
 
         this.setVisible(false);
         this.repaint();
@@ -106,7 +85,71 @@ public class GamePanel extends JPanel implements ActionListener {
 
 	return hintButton;
     }
+
+    /**
+     * @param rows rows of the question text area
+     * @param cols cols of the question text area
+     * @param font font of the question text area
+     * @param text text of the question text area
+     * @return textArea the new question text area, questionScrollPane is also initialized
+     */
+
+    private JTextArea generateQuestionTextArea(int rows, int cols, Font font, String text){
+	
+	JTextArea textArea = new JTextArea(rows, cols);
+	textArea.setLineWrap(true);
+	questionScrollPane = new JScrollPane(textArea);
+	questionScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+	questionScrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		questionScrollPane.getVerticalScrollBar().addAdjustmentListener(new AdjustmentListener(){
+		public void adjustmentValueChanged(AdjustmentEvent e) {
+		    e.getAdjustable().setValue(e.getAdjustable().getMaximum());
+		}
+	    });
+	textArea.setFont(font);
+	textArea.setEditable(false);
+	textArea.append(text);
+
+	return textArea;
+    }
+
+    /**                                                                                              
+     * @param rows rows of the answer text area                                                      
+     * @param cols cols of the answer text area                                                      
+     * @param font font of the answer text area                                                      
+     * @param text text of the answer text area                                                      
+     * @return textArea the new answer text area, answerScrollPane is also initialized             
+     */
+
+    private JTextArea generateAnswerTextArea(int rows, int cols, Font font, String text){
+
+	JTextArea textArea = new JTextArea(rows, cols);
+	textArea.setLineWrap(true);
+	answerScrollPane = new JScrollPane(textArea);
+	answerScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+	answerScrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+	
+	textArea.setFont(font);
+	textArea.setEditable(false);
+	textArea.append(text);
+
+	return textArea;
+    }
     
+    
+
+    private JScrollPane generateScrollPane(JTextArea textArea){
+	JScrollPane scrollPane = new JScrollPane(textArea);
+	scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+	scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+	scrollPane.getVerticalScrollBar().addAdjustmentListener(new AdjustmentListener(){
+		public void adjustmentValueChanged(AdjustmentEvent e) {
+		    e.getAdjustable().setValue(e.getAdjustable().getMaximum());
+		}
+	    });
+
+	return scrollPane;
+    }
     public void setHintButtonVisible(Boolean b) {
 	if (!b)
 	    hintButton.setText("Click For Hint");
@@ -136,10 +179,10 @@ public class GamePanel extends JPanel implements ActionListener {
     }
 
     /**
-     * @param txt answer that goes into answerTextAres
+     * @param text answer that goes into answerTextAres
      */
-    public void setAnswerTextArea(String txt) {
-        this.answerTextArea.append(txt + "\n");
+    public void setAnswerTextArea(String text) {
+        this.answerTextArea.append(text + "\n");
     }
 
     /**
