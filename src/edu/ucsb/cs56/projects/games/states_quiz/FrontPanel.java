@@ -7,6 +7,13 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
+/**
+ * @author Zhansaya Abdikarimova
+ * @author Jenny Vien
+ * @author Nick Eidler
+ * @author Ryan Allen
+ * @author Ryan Kemper
+ */
 
 public class FrontPanel extends JPanel{
     private BufferedImage map;
@@ -19,9 +26,9 @@ public class FrontPanel extends JPanel{
     private JRadioButton hardButton;
     private JRadioButton normalButton;
     private ButtonGroup difficulties;
-    
-    public FrontPanel(){
 
+    public FrontPanel(){
+	
         this.setLayout(null);
         try {
             map = ImageIO.read(getClass().getClassLoader().getResource(
@@ -95,24 +102,57 @@ public class FrontPanel extends JPanel{
     public void paintComponent(Graphics g) {
         g.drawImage(map, 0, 0, 980, 680, this);
     }
-
+    
+    /**
+     * @return state game mode button
+     */
+    
     public JButton getStateButton(){
         return this.stateButton;
     }
+
+    /**
+    * @return capital game mode button
+    */
+  
     public JButton getCapitalButton(){
         return this.capitalButton;
     }
+    
+    /**
+     * @return stateThenCapital game mode button
+     */
+
     public JButton getStateThenCapitalButton() { return this.stateThenCapitalButton; }
 
+    /**
+     * @return JRadioButton representing easy difficulty
+     */
+    
     public JRadioButton getEasyButton(){
 	return this.easyButton;
     }
+    
+    /**
+     * @return JRadioButton representing normal difficulty
+     */
+    
     public JRadioButton getNormalButton(){
 	return this.normalButton;
     }
+
+    /**
+     * @return JRadioButton representing hard difficulty
+     */
+    
     public JRadioButton getHardButton(){
 	return this.hardButton;
     }
+    
+    /**
+     * @return the buttongroup representing the difficulties 
+     */
+    
     public ButtonGroup getDifficultiesGroup(){
 	return this.difficulties;
     }

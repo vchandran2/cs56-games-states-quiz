@@ -20,6 +20,8 @@ import java.util.ArrayList;
  * @author Jenny Vien
  * @author Zhansaya Abdikarimova
  * @author Nick Eidler
+ * @author Ryan Allen
+ * @author Ryan Kemper
  */
 
 public class MapPanel extends JPanel implements ActionListener {

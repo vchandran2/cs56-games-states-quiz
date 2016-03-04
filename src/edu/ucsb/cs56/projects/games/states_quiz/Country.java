@@ -10,6 +10,8 @@ import java.util.Scanner;
  * @author Zhansaya Abdikarimova
  * @author Jenny Vien
  * @author Nick Eidler
+ * @author Ryan Allen
+ * @author Ryan Kemper
  */
 
 public class Country {
@@ -68,8 +70,8 @@ public class Country {
 
 
     /**
-     * @param numberOfStates represents the number of states in country
-     * @param file represent the file that hold all the states info.
+     * @param numberOfStates the number of states in country
+     * @param file the file that holds all the states info
      */
     public void addStates(int numberOfStates, File file) throws Exception {
         Scanner scanner = new Scanner(file);
@@ -85,19 +87,18 @@ public class Country {
             x=Integer.parseInt(splitted[2]);
             y=Integer.parseInt(splitted[3]);
             states.add(new State(splitted[0],splitted[1],x,y));
-            //System.out.println(states.get(i));
         }
     }
 
     /**
-     * A list of all the states in the country.
+     * @return a list of all the states in the country.
      */
     public ArrayList<State> getStatesArray(){
         return states;
     }
 
     /**
-     * Returns a string with name and the capital of the country. 
+     * @return a string with name and the capital of the country. 
      */
     @Override
     public String toString(){
