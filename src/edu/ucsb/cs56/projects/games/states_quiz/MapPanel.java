@@ -86,9 +86,18 @@ public class MapPanel extends JPanel implements ActionListener {
         g.drawImage(map, 0, 0, this);
     }
 
+    /**
+     * @return QuestionManager
+     */
+
     public QuestionManager getQuestionManager(){
 	return this.questionManager;
     }
+
+    /**
+     * @param qm Represents the questionManager being made
+     */
+
     public void setQuestionManager(QuestionManager qm) {
         this.questionManager = qm;
     }

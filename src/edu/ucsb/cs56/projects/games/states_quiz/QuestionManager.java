@@ -71,6 +71,9 @@ public class QuestionManager {
         this.receiveAnswer(((JButton) o));
     }
 
+    /**
+     * Called by GamePanel when receiving an event 
+     */
     public State getCorrectState(){
 	return this.states.get(currentQuestion);
     }
@@ -96,6 +99,10 @@ public class QuestionManager {
     public void setGameMode(String mode){
 	this.gameMode = mode;
     }
+
+    /**
+     * Returns the selected game mode
+     */
     
     public String getGameMode(){
 	return this.gameMode;
@@ -107,7 +114,7 @@ public class QuestionManager {
      */
     public void askNextQuestion(){
 	if(!randStateIndexes.isEmpty()) {
-	    if (this.gameMode == "Capitals")
+	    if (getGameMode() == "Capitals")
 		gamePanel.setQuestionTextArea("Click on: " + states.get(currentQuestion).getCapital() + "\n");
 	    else
 		gamePanel.setQuestionTextArea("Click on: " + states.get(currentQuestion).getName() + "\n");
@@ -132,7 +139,7 @@ public class QuestionManager {
      */
     public  void receiveAnswer(JButton answerButton){
 	if (answerButton == mapPanel.stateButtons[currentQuestion]) {
-	    if (this.gameMode == "States then Capitals") {
+	    if (getGameMode() == "States then Capitals") {
 		checkCapital();
 	    }
 	    gamePanel.setAnswerTextArea(states.get(currentQuestion).getName());

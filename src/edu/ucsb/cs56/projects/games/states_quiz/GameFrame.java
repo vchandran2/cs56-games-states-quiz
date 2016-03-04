@@ -10,6 +10,8 @@ import java.awt.event.ActionListener;
  @author Jenny Vien
  @author Zhansaya Abdikarimova
  @author Nick Eidler
+ @author Ryan Allen
+ @author Ryan Kemper
  */
 
 public class GameFrame extends JFrame implements ActionListener {

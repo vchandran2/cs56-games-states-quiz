@@ -13,6 +13,8 @@ import java.awt.event.ActionListener;
  * @author Nina Kaufman
  * @author Jenny Vien
  * @author Zhansaya Abdikarimova
+ * @author Ryan Kemper
+ * @author Ryan Allen
  */
 
 
@@ -73,7 +75,7 @@ public class GamePanel extends JPanel implements ActionListener {
      * @param w width of hintButton
      * @param h height of hintButton
      * @param text hintButton display text
-     * @return a newly generated hintButton with the specified x/y/text values
+     * @return a newly generated hintButton with the specified x/y/w/h/text values
      */
     
     private JButton generateHintButton(int x, int y, int w, int h, String text){
@@ -135,21 +137,12 @@ public class GamePanel extends JPanel implements ActionListener {
 
 	return textArea;
     }
-    
-    
 
-    private JScrollPane generateScrollPane(JTextArea textArea){
-	JScrollPane scrollPane = new JScrollPane(textArea);
-	scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-	scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-	scrollPane.getVerticalScrollBar().addAdjustmentListener(new AdjustmentListener(){
-		public void adjustmentValueChanged(AdjustmentEvent e) {
-		    e.getAdjustable().setValue(e.getAdjustable().getMaximum());
-		}
-	    });
-
-	return scrollPane;
-    }
+    /**
+     * Called by QuestionManager when number of guesses hits 3
+     * @param b the boolean that represents whether to set the hint button visible or not
+     */
+    
     public void setHintButtonVisible(Boolean b) {
 	if (!b)
 	    hintButton.setText("Click For Hint");
