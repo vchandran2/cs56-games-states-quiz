@@ -10,6 +10,8 @@ import java.util.ArrayList;
  * @author Jenny Vien
  * @author Zhansaya Abdikarimova
  * @author Nick Eidler
+ * @author Ryan Allen
+ * @author Ryan Kemper
  */
 
 public class QuestionManager {
@@ -73,14 +75,32 @@ public class QuestionManager {
 	return this.states.get(currentQuestion);
     }
 
-    public String getDifficulty(){
-	return this.difficulty;
-    }
-
+    /**
+     * Called by the GameFrame when the game starts
+     * @param diff String representing the difficulty selected
+     */
+    
     public void setDifficulty(String diff){
 	this.difficulty = diff;
     }
 
+    public String getDifficulty(){
+	return this.difficulty;
+    }
+
+    /**
+     * Called by GameFrame when a game mode is selected and the game starts
+     * @param mode String that represents the game mode selected
+     */
+    
+    public void setGameMode(String mode){
+	this.gameMode = mode;
+    }
+    
+    public String getGameMode(){
+	return this.gameMode;
+    }
+    
     /**
      * Asks the next question if the question counter is less than 50. Prints
      * out the current state.
@@ -151,13 +171,19 @@ public class QuestionManager {
 	    guesses++;
 	    if (guesses == 3)
 		gamePanel.setHintButtonVisible(true);
-
-	    gamePanel.setQuestionTextArea("Nope!");
-
-	    this.repeatQuestion();
+	    
+	    //	    gamePanel.setQuestionTextArea("Nope!");
+	    gamePanel.getQuestionTextArea().setText("Nope! Guesses: " + this.guesses + "\n");
+	    this.askNextQuestion();
+	    //	    this.repeatQuestion();
 	}
     }
 
+    /**
+     * Called when in StateThenCapitals mode
+     * Continuosly loops until the capital is entered correctly
+     */
+    
     private void checkCapital(){
 	boolean answer = askCapital();
 	while (!answer){
@@ -167,6 +193,11 @@ public class QuestionManager {
 	}
     }
 
+    /**
+     * Called by checkCapital during StateThenCapitals mode
+     * Prompts the user for the capital of the current state
+     */
+    
     private boolean askCapital(){
 	String s = JOptionPane.showInputDialog(gamePanel.getParent(), "Enter the capital of " + states.get(currentQuestion).getName() + ":", "Capital Input", JOptionPane.PLAIN_MESSAGE);
 	if (s.equals(states.get(currentQuestion).getCapital()))
@@ -174,13 +205,4 @@ public class QuestionManager {
 	else
 	    return false;
     }
-    
-    public void setGameMode(String mode){
-	this.gameMode = mode;
-    }
-    
-    public String getGameMode(){
-	return this.gameMode;
-    }
-    
 }
