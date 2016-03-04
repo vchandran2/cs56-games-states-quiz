@@ -73,6 +73,7 @@ public class QuestionManager {
 
     /**
      * Called by GamePanel when receiving an event 
+     * @return returns correct state
      */
     public State getCorrectState(){
 	return this.states.get(currentQuestion);
@@ -87,6 +88,10 @@ public class QuestionManager {
 	this.difficulty = diff;
     }
 
+    /**
+     * @return returns current difficulty
+     */
+    
     public String getDifficulty(){
 	return this.difficulty;
     }
@@ -101,7 +106,7 @@ public class QuestionManager {
     }
 
     /**
-     * Returns the selected game mode
+     * @return returns the selected game mode
      */
     
     public String getGameMode(){
@@ -126,16 +131,10 @@ public class QuestionManager {
     }
     
     /**
-     * If the answer given was wrong, reasks the question without re-printing
-     */
-    public void repeatQuestion() {
-	mapPanel.setAnswer(mapPanel.stateButtons[currentQuestion]);
-    }        
-    
-    /**
      * Receives the answer from MapPanel and checks to see if the answer is
      * equivalent to the current state. Prints out the current score and
      * increments the counters.
+     * @param answerButton JButton that represents answer input
      */
     public  void receiveAnswer(JButton answerButton){
 	if (answerButton == mapPanel.stateButtons[currentQuestion]) {
@@ -179,10 +178,8 @@ public class QuestionManager {
 	    if (guesses == 3)
 		gamePanel.setHintButtonVisible(true);
 	    
-	    //	    gamePanel.setQuestionTextArea("Nope!");
 	    gamePanel.getQuestionTextArea().setText("Nope! Guesses: " + this.guesses + "\n");
 	    this.askNextQuestion();
-	    //	    this.repeatQuestion();
 	}
     }
 
@@ -203,6 +200,7 @@ public class QuestionManager {
     /**
      * Called by checkCapital during StateThenCapitals mode
      * Prompts the user for the capital of the current state
+     * @return boolean representing if capital input is correct or not
      */
 
     private boolean askCapital(){
