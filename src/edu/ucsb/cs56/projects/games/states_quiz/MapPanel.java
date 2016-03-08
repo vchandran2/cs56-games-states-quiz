@@ -20,6 +20,8 @@ import java.util.ArrayList;
  * @author Jenny Vien
  * @author Zhansaya Abdikarimova
  * @author Nick Eidler
+ * @author Ryan Allen
+ * @author Ryan Kemper
  */
 
 public class MapPanel extends JPanel implements ActionListener {
@@ -63,7 +65,6 @@ public class MapPanel extends JPanel implements ActionListener {
             e.printStackTrace();
         }
 
-//        statesArray = new ArrayList<State>();
         statesArray = c.getStatesArray();
 
         for (int i = 0; i < statesArray.size(); i++) {
@@ -72,7 +73,7 @@ public class MapPanel extends JPanel implements ActionListener {
 
             x = statesArray.get(i).getXCoord();
             y = statesArray.get(i).getYCoord();
-
+	    
             stateButtons[i].setBounds(x, y, width, height);
             stateButtons[i].addActionListener(this);
         }
@@ -87,6 +88,18 @@ public class MapPanel extends JPanel implements ActionListener {
         g.drawImage(map, 0, 0, this);
     }
 
+    /**
+     * @return QuestionManager
+     */
+
+    public QuestionManager getQuestionManager(){
+	return this.questionManager;
+    }
+
+    /**
+     * @param qm Represents the questionManager being made
+     */
+
     public void setQuestionManager(QuestionManager qm) {
         this.questionManager = qm;
     }
@@ -94,7 +107,7 @@ public class MapPanel extends JPanel implements ActionListener {
     /**
      * @param button button that was clicked by a user
      */
-
+    
     public void setAnswer(JButton button) {
         this.answer = button;
     }
