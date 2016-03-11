@@ -5,10 +5,14 @@ project history
 ===============
 ```
  W14 | jcneally 5pm | zhansaya19, jennyvien | Quiz on US States with GUI
+ W16 | ashedden 6pm | rowallen, ryankemper  | expanded features, improved architecture
 ```
 
 Zhansaya Abdikarimova
 Jenny Vien
+
+Ryan Allen
+Ryan Kemper
 
 
 ## Description
@@ -92,5 +96,5 @@ There are several ways of how the game can be developed further:
 	- there is an option for continent, countries quizes
 	- quizzes for states and capitals of other countries respectively
 	- go back button for both state and capital quiz
-	- ...
+	- expand behavior of hint button to offer deeper functionality
 
