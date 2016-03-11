@@ -33,6 +33,8 @@ Ryan Kemper
 
 * When the quiz starts, it askes if the user wants to be tested on state locations or their capital locations. The initial cover page is in the `FrontPanel` class where there are two buttons for the two options, as well as radio buttons to select the difficulty settings. 
 
+(Note: user interface screenshots may not reflect the most recent design iteration)
+
 ![](http://i.imgur.com/1IdD5Zv.png)
 
 * After selecting option of the quiz, `GamePanel` class runs the selected option. The `GamePanel` class has a MapPanel, a question scrollbar, an answer scroll bar, and 3 difficulty buttons. The `MapPanel` class holds the map of the United States with buttons for every state. If the user selects the state option it asks questions about each state location in random order, and if he or she selects the "states then capitals" option, the game will generate capital questions respectively. Here are the examples of states and capitals quizzes:  
