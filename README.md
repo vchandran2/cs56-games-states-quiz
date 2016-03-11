@@ -24,11 +24,6 @@ Ryan Kemper
 
 ## Documentation
 
-* While our project does not specifically employ the Model-Viewer-Controller (MVC) design pattern, the existing architecture distributes the tasks in a way that loosely aligns with the design. Storage of data is handled by the State and Country classes, corresponding to the "model" part of MVC. QuestionManager serves as the intermediary between the data in the "model" classes and the graphical display, so it functions as the controller. Finally, graphical elements are handled by GameFrame.java, GamePanel and FrontPanel, corresponding to the "viewer".
-
-
-* Future refactoring of the project could more formally implement the MVC framework. This would have the benefit of making it far easier to comprehend the overall structure of the project. Additionally, separating out the 3 different roles (M-V-C) will make it easy to make changes that only affect the relevant portion of the MVC pattern.
-
 * The main frame of the game is in the `GameFrame` class that holds two different main panels: `FrontPanel` and `GamePanel`. 
 
 * When the quiz starts, it askes if the user wants to be tested on state locations or their capital locations. The initial cover page is in the `FrontPanel` class where there are two buttons for the two options, as well as radio buttons to select the difficulty settings. 
@@ -95,6 +90,13 @@ public void addStates(int numberOfStates, File file) throws Exception {
 
 ## How to run 
 The main method is in `GameFrame` and in order to start the game, use `ant run`. 
+
+## W16 Final Remarks
+
+* While our project does not specifically employ the Model-Viewer-Controller (MVC) design pattern, the existing architecture distributes the tasks in a way that loosely aligns with the design. Storage of data is handled by the State and Country classes, corresponding to the "model" part of MVC. QuestionManager serves as the intermediary between the data in the "model" classes and the graphical display, so it functions as the controller. Finally, graphical elements are handled by GameFrame.java, GamePanel and FrontPanel, corresponding to the "viewer".
+
+
+* Future refactoring of the project could more formally implement the MVC framework. This would have the benefit of making it far easier to comprehend the overall structure of the project. Additionally, separating out the 3 different roles (M-V-C) will make it easy to make changes that only affect the relevant portion of the MVC pattern.
 
 ### Ideas for future developers
 There are several ways of how the game can be developed further:
