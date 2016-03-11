@@ -5,28 +5,34 @@ project history
 ===============
 ```
  W14 | jcneally 5pm | zhansaya19, jennyvien | Quiz on US States with GUI
+ W16 | ashedden 6pm | rowallen, ryankemper  | Added hint button, difficulty settings, improved architecture
 ```
 
 Zhansaya Abdikarimova
 Jenny Vien
 
+Ryan Allen
+Ryan Kemper
+
 
 ## Description
 
-* This application is a state quiz that tests the users' knowledge of the locations of states and capitals on the US map. As for the future, it can be advanced to choosing different countries and continents. 
+* This application is a geography quiz that tests the users' knowledge of the locations of states and capitals on the US map. As for the future, it can be advanced to choosing different countries and continents. 
 
 
-* javadoc: http://www.cs.ucsb.edu/~zhansaya/cs56/W14/StateQuiz/javadoc/
+* javadoc: http://www.cs.ucsb.edu/~rowallen/cs56/W16/StateQuiz/javadoc/
 
 ## Documentation
 
 * The main frame of the game is in the `GameFrame` class that holds two different main panels: `FrontPanel` and `GamePanel`. 
 
-* When the quiz starts, it askes if the user wants to be tested on state locations or their capital locations. The initial cover page is in the `FrontPanel` class where there are two buttons for the two options. 
+* When the quiz starts, it askes if the user wants to be tested on state locations or their capital locations. The initial cover page is in the `FrontPanel` class where there are two buttons for the two options, as well as radio buttons to select the difficulty settings. 
+
+(Note: user interface screenshots may not reflect the most recent design iteration)
 
 ![](http://i.imgur.com/1IdD5Zv.png)
 
-* After selecting option of the quiz, `GamePanel` class runs the selected option. The `GamePanel` class has three main parts, a MapPanel, a question scrollbar, and an answer scroll bar. The `MapPanel` class holds the map of the United States with buttons for every state. If user selects state option it asks questions about each state locations in random order, and if he or she selects state capitals option, the game will generate capital questions respectevily. Here are the examples of states and capitals quizzes:  
+* After selecting option of the quiz, `GamePanel` class runs the selected option. The `GamePanel` class has a MapPanel, a question scrollbar, an answer scroll bar, and 3 difficulty buttons. The `MapPanel` class holds the map of the United States with buttons for every state. If the user selects the state option it asks questions about each state location in random order, and if he or she selects the "states then capitals" option, the game will generate capital questions respectively. Here are the examples of states and capitals quizzes:  
 
 
 ![](http://i.imgur.com/XJQ9DyI.png)
@@ -38,7 +44,7 @@ Jenny Vien
 
 * All of the data is stored in the `States.txt` file. It has a list of states, their capitals and locations for buttons: ``` Alabama,Montgomery,495,310 ```
 
-* The program reads data in the `Country` class. As you can see, in the constructor, every Country object has its name, capital and list of its states. It creates an `ArrayList` of `State` objects.  
+* The program stores data in the `Country` class. As you can see, in the constructor, every Country object has its name, capital and list of its states. It creates an `ArrayList` of `State` objects.  
 
 ```java
 public Country(){
@@ -80,10 +86,17 @@ public void addStates(int numberOfStates, File file) throws Exception {
  }
 ```
 
-* Another very important file that actually runs the game is `QuestionManager` class. It has the basic logic for running the quiz. It stores the list of states and their capitals, generates random indexes for the questions, and asks questions until all of the states asked. 
+* Another very important file that actually runs the game is `QuestionManager` class. It has the basic logic for running the quiz. It stores the list of states and their capitals, generates random indexes for the questions, and asks questions until all of the states asked. QuestionManager also supports the aforementioned game modes (states, capitals, states then capitals).
 
 ## How to run 
-The main class in `GameMain` and in order to start the game, use `ant run`. 
+The main method is in `GameFrame` and in order to start the game, use `ant run`. 
+
+## W16 Final Remarks
+
+* While our project does not specifically employ the Model-Viewer-Controller (MVC) design pattern, the existing architecture distributes the tasks in a way that loosely aligns with the design. Storage of data is handled by the State and Country classes, corresponding to the "model" part of MVC. QuestionManager serves as the intermediary between the data in the "model" classes and the graphical display, so it functions as the controller. Finally, graphical elements are handled by GameFrame.java, GamePanel and FrontPanel, corresponding to the "viewer".
+
+
+* Future refactoring of the project could more formally implement the MVC framework. This would have the benefit of making it far easier to comprehend the overall structure of the project. Additionally, separating out the 3 different roles (M-V-C) will make it easy to make changes that only affect the relevant portion of the MVC pattern.
 
 ### Ideas for future developers
 There are several ways of how the game can be developed further:
@@ -92,5 +105,7 @@ There are several ways of how the game can be developed further:
 	- there is an option for continent, countries quizes
 	- quizzes for states and capitals of other countries respectively
 	- go back button for both state and capital quiz
-	- ...
+	- expand behavior of hint button to offer deeper functionality
+	- play a sound based off whether a correct or incorrect answer is selected
+	- record and analyze statistics about player performance to generate a "report" at the end of the game
 

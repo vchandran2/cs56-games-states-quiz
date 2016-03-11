@@ -8,6 +8,7 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 /**
+ * FrontPanel displays the game and difficulty options at the start of the game.
  * @author Zhansaya Abdikarimova
  * @author Jenny Vien
  * @author Nick Eidler
