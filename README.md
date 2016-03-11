@@ -20,7 +20,7 @@ Ryan Kemper
 * This application is a state quiz that tests the users' knowledge of the locations of states and capitals on the US map. As for the future, it can be advanced to choosing different countries and continents. 
 
 
-* javadoc: http://www.cs.ucsb.edu/~zhansaya/cs56/W14/StateQuiz/javadoc/
+* javadoc: http://www.cs.ucsb.edu/~rowallen/cs56/W16/StateQuiz/javadoc/
 
 ## Documentation
 
