@@ -17,7 +17,7 @@ Ryan Kemper
 
 ## Description
 
-* This application is a state quiz that tests the users' knowledge of the locations of states and capitals on the US map. As for the future, it can be advanced to choosing different countries and continents. 
+* This application is a geography quiz that tests the users' knowledge of the locations of states and capitals on the US map. As for the future, it can be advanced to choosing different countries and continents. 
 
 
 * javadoc: http://www.cs.ucsb.edu/~rowallen/cs56/W16/StateQuiz/javadoc/
@@ -92,7 +92,7 @@ public void addStates(int numberOfStates, File file) throws Exception {
 * Another very important file that actually runs the game is `QuestionManager` class. It has the basic logic for running the quiz. It stores the list of states and their capitals, generates random indexes for the questions, and asks questions until all of the states asked. QuestionManager also supports the aforementioned game modes (states, capitals, states then capitals).
 
 ## How to run 
-The main class in `GameFrame` and in order to start the game, use `ant run`. 
+The main method is in `GameFrame` and in order to start the game, use `ant run`. 
 
 ### Ideas for future developers
 There are several ways of how the game can be developed further:
