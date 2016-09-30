@@ -14,7 +14,7 @@
     <property name = "main" value = "edu.ucsb.cs56.projects.games.states_quiz.GameFrame"/>
     <path id = "project.class.path">
         <pathelement location = "build"/>
-        <pathelement location = "/cs/faculty/pconrad/public_html/cs56lib/junit-4.8.2.jar"/>
+        <pathelement location = "lib/junit-4.8.2.jar"/>
     </path>
 
     <target name = "compile" description = "Compile the map quiz">
