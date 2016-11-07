@@ -177,15 +177,22 @@ public class QuestionManager {
 	    guesses++;
 	    if (guesses == 3)
 		gamePanel.setHintButtonVisible(true);
-	    
-	    gamePanel.getQuestionTextArea().setText("Nope! Guesses: " + this.guesses + "\n");
+
+        String stateChosen = "";
+        for (int i = 0; i < 50; i ++) {
+            if (answerButton == mapPanel.stateButtons[i]) {
+                stateChosen = states.get(i).getName();
+                break;
+            }
+        }
+	    gamePanel.getQuestionTextArea().setText("Nope! That was " + stateChosen + "! Total guesses: " + this.guesses + "\n");
 	    this.askNextQuestion();
 	}
     }
 
     /**
      * Called when in StateThenCapitals mode
-     * Continuosly loops until the capital is entered correctly
+     * Continuously loops until the capital is entered correctly
      */
     
     private void checkCapital(){

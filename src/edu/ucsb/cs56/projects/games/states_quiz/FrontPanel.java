@@ -51,7 +51,7 @@ public class FrontPanel extends JPanel{
         capitalButton = new JButton("Capitals");
         capitalButton.setFont(modeFont);
 	
-        stateThenCapitalButton = new JButton("State then Capitals");
+        stateThenCapitalButton = new JButton("States then Capitals");
 	stateThenCapitalButton.setFont(modeFont);
 
 	diffHeader = new JLabel("Select difficulty:", JLabel.CENTER);
