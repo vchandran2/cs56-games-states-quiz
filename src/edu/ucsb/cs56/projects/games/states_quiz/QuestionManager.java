@@ -70,8 +70,8 @@ public class QuestionManager {
 	 *
 	 * @param o Object representing the button that was clicked.
 	 */
-	public void mapClickCallback(Object o) {
-		this.receiveAnswer(((JButton) o));
+	public boolean mapClickCallback(Object o) {
+		return this.receiveAnswer(((JButton) o));
 	}
 
 	/**
@@ -125,7 +125,7 @@ public class QuestionManager {
 	 */
 	public void askNextQuestion() {
 		if (!randStateIndexes.isEmpty()) {
-			if (getGameMode() == "Capitals")
+			if (getGameMode().equals("Capitals"))
 				gamePanel.setQuestionTextArea("Click on: " + states.get(currentQuestion).getCapital() + "\n");
 			else
 				gamePanel.setQuestionTextArea("Click on: " + states.get(currentQuestion).getName() + "\n");
@@ -142,9 +142,9 @@ public class QuestionManager {
 	 *
 	 * @param answerButton JButton that represents answer input
 	 */
-	public void receiveAnswer(JButton answerButton) {
+	public boolean receiveAnswer(JButton answerButton) {
 		if (answerButton == mapPanel.stateButtons[currentQuestion]) {
-			if (getGameMode() == "States then Capitals") {
+			if (getGameMode().equals("States then Capitals")) {
 				checkCapital();
 			}
 			gamePanel.setAnswerTextArea(states.get(currentQuestion).getName());
@@ -156,7 +156,7 @@ public class QuestionManager {
 				button.setVisible(true);
 			}
 
-			if (this.getDifficulty() == "Easy") {
+			if (this.getDifficulty().equals("Easy")) {
 				answerButton.setVisible(false);
 			}
 
@@ -174,8 +174,9 @@ public class QuestionManager {
 				this.guesses = 0;
 			gamePanel.setQuestionTextArea("Your current score is: " + currentScore + "\n");
 			this.askNextQuestion();
+			return true;
 		} else {
-			if (this.getDifficulty() != "Hard") {
+			if (this.getDifficulty().equals("Hard")) {
 				answerButton.setVisible(false);
 				this.hiddenButtons.add(answerButton);
 			}
@@ -192,6 +193,7 @@ public class QuestionManager {
 			}
 			gamePanel.getQuestionTextArea().setText("Nope! That was " + stateChosen + "! Total guesses: " + this.guesses + "\n");
 			this.askNextQuestion();
+			return false;
 		}
 	}
 
