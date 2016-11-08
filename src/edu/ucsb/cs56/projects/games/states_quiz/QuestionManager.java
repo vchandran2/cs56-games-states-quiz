@@ -1,5 +1,8 @@
 package edu.ucsb.cs56.projects.games.states_quiz;
 
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
@@ -33,15 +36,17 @@ public class QuestionManager {
 	protected ArrayList<State> correctStates;
 	protected ArrayList<JButton> hiddenButtons;
 
+    private Runnable reloadFrame;
 
-	/**
-	 * Constructor QuestionManager creates a new array of the fifty state names
-	 */
-	public QuestionManager(GamePanel parent) {
-		states = new ArrayList<State>();
-		correctStates = new ArrayList<State>();
-		randStateIndexes = new ArrayList<Integer>();
-		hiddenButtons = new ArrayList<JButton>();
+    /**
+     * Constructor QuestionManager creates a new array of the fifty state names
+     */
+    public QuestionManager(GamePanel parent, Runnable reloadFrame) {
+        this.reloadFrame = reloadFrame;
+        states = new ArrayList<State>();
+        correctStates = new ArrayList<State>();
+        randStateIndexes = new ArrayList<Integer>();
+	    hiddenButtons = new ArrayList<JButton>();
 
 		gamePanel = parent;
 		mapPanel = gamePanel.getMapPanel();
@@ -197,19 +202,30 @@ public class QuestionManager {
 		}
 	}
 
-	/**
-	 * Called when in StateThenCapitals mode
-	 * Continuously loops until the capital is entered correctly
-	 */
+    /**
+     * Called when in StateThenCapitals mode
+     * Continuously loops until the capital is entered correctly
+     */
 
-	private void checkCapital() {
-		boolean answer = askCapital();
-		while (!answer) {
-			gamePanel.setQuestionTextArea("Capital is Incorrect! ");
-			answer = askCapital();
-			this.guesses++;
-		}
+    private void checkCapital(){
+	boolean answer = askCapital();
+	while (!answer){
+	    gamePanel.setQuestionTextArea("Capital is Incorrect! ");
+        int n = JOptionPane.showConfirmDialog(
+                gamePanel.getParent(),
+                "Would you like to play again?",
+                "Congratulations!",
+                JOptionPane.YES_NO_OPTION);
+        if (n == JOptionPane.NO_OPTION) {
+            System.exit(0);
+        }
+        else {
+            reloadFrame.run();
+        }
+        answer = askCapital();
+	    this.guesses++;
 	}
+    }
 
 	/**
 	 * Called by checkCapital during StateThenCapitals mode
@@ -225,5 +241,6 @@ public class QuestionManager {
 		else
 			return false;
 	}
+
 
 }
