@@ -22,20 +22,11 @@ public class GameFrame extends JFrame implements ActionListener {
 
 	private static Dimension frameDimension = new Dimension(980, 680);
 
-	private GamePanel gamePanel;
-	private FrontPanel frontPanel;
-	private QuestionManager questionManager;
     private GamePanel gamePanel;
     private FrontPanel frontPanel;
     private QuestionManager questionManager;
 
-    public static void main(String[] args) {
-        new GameFrame();
-    }
-
 	public GameFrame() {
-		gamePanel = new GamePanel();
-    public GameFrame() {
         init();
     }
 
@@ -63,30 +54,6 @@ public class GameFrame extends JFrame implements ActionListener {
 		new GameFrame();
 	}
 
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		frontPanel.setVisible(false);
-		gamePanel.setVisible(true);
-		questionManager = new QuestionManager(gamePanel);
-
-		if (e.getActionCommand().matches("Capitals")) {
-			questionManager.setGameMode("Capitals");
-			System.out.println("Capitals");
-			this.setTitle("Capitals");
-		} else if (e.getActionCommand().matches("States")) {
-			questionManager.setGameMode("States");
-			System.out.println("States");
-			this.setTitle("States");
-		} else if (e.getActionCommand().matches("States then Capitals")) {
-			questionManager.setGameMode("States then Capitals");
-			System.out.println("States then Capitals");
-			this.setTitle("States then Capitals");
-		}
-		ButtonModel selectedDiff = frontPanel.getDifficultiesGroup().getSelection();
-		questionManager.init();
-		questionManager.setDifficulty(selectedDiff.getActionCommand());
-		System.out.println(questionManager.getDifficulty());
-	}
     @Override
     public void actionPerformed(ActionEvent e) {
         frontPanel.setVisible(false);

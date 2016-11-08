@@ -1,12 +1,8 @@
 package edu.ucsb.cs56.projects.games.states_quiz;
 
 import javax.swing.*;
-import java.awt.*;
-import java.awt.event.WindowEvent;
 import java.util.ArrayList;
-
-import javax.swing.JButton;
-import javax.swing.JOptionPane;
+import java.util.Objects;
 
 /**
  * QuestionManager manages the current question and score
@@ -124,36 +120,49 @@ public class QuestionManager {
 		this.gameMode = mode;
 	}
 
-	/**
-	 * Asks the next question if the question counter is less than 50. Prints
-	 * out the current state.
-	 */
-	public void askNextQuestion() {
-		if (!randStateIndexes.isEmpty()) {
-			if (getGameMode().equals("Capitals"))
-				gamePanel.setQuestionTextArea("Click on: " + states.get(currentQuestion).getCapital() + "\n");
-			else
-				gamePanel.setQuestionTextArea("Click on: " + states.get(currentQuestion).getName() + "\n");
-			mapPanel.setAnswer(mapPanel.stateButtons[currentQuestion]);
-		} else {
-			gamePanel.setQuestionTextArea("You're finished! Yay!");
-		}
+    /**
+     * Asks the next question if the question counter is less than 50. Prints
+     * out the current state.
+     */
+    public void askNextQuestion(){
+	if(!randStateIndexes.isEmpty()) {
+	    if (Objects.equals(getGameMode(), "Capitals"))
+		gamePanel.setQuestionTextArea("Click on: " + states.get(currentQuestion).getCapital() + "\n");
+	    else
+		gamePanel.setQuestionTextArea("Click on: " + states.get(currentQuestion).getName() + "\n");
+	    mapPanel.setAnswer(mapPanel.stateButtons[currentQuestion]);
 	}
+	else {
+        mapPanel.getSoundManager().playCompletedSound();
+	    gamePanel.setQuestionTextArea("You're finished! Yay!");
+        int n = JOptionPane.showConfirmDialog(
+                gamePanel.getParent(),
+                "Would you like to play again?",
+                "Congratulations!",
+                JOptionPane.YES_NO_OPTION);
+        if (n == JOptionPane.NO_OPTION) {
+            System.exit(0);
+        }
+        else {
+            reloadFrame.run();
+        }
 
-	/**
-	 * Receives the answer from MapPanel and checks to see if the answer is
-	 * equivalent to the current state. Prints out the current score and
-	 * increments the counters.
-	 *
-	 * @param answerButton JButton that represents answer input
-	 */
-	public boolean receiveAnswer(JButton answerButton) {
-		if (answerButton == mapPanel.stateButtons[currentQuestion]) {
-			if (getGameMode().equals("States then Capitals")) {
-				checkCapital();
-			}
-			gamePanel.setAnswerTextArea(states.get(currentQuestion).getName());
-			gamePanel.getQuestionTextArea().setText("Congrats! ");
+	}
+    }
+
+    /**
+     * Receives the answer from MapPanel and checks to see if the answer is
+     * equivalent to the current state. Prints out the current score and
+     * increments the counters.
+     * @param answerButton JButton that represents answer input
+     */
+    public boolean receiveAnswer(JButton answerButton){
+	if (answerButton == mapPanel.stateButtons[currentQuestion]) {
+	    if (getGameMode().equals("States then Capitals")) {
+		checkCapital();
+	    }
+	    gamePanel.setAnswerTextArea(states.get(currentQuestion).getName());
+	    gamePanel.getQuestionTextArea().setText("Congrats! ");
 
 			correctStates.add(states.get(currentQuestion));
 
@@ -211,17 +220,6 @@ public class QuestionManager {
 	boolean answer = askCapital();
 	while (!answer){
 	    gamePanel.setQuestionTextArea("Capital is Incorrect! ");
-        int n = JOptionPane.showConfirmDialog(
-                gamePanel.getParent(),
-                "Would you like to play again?",
-                "Congratulations!",
-                JOptionPane.YES_NO_OPTION);
-        if (n == JOptionPane.NO_OPTION) {
-            System.exit(0);
-        }
-        else {
-            reloadFrame.run();
-        }
         answer = askCapital();
 	    this.guesses++;
 	}
