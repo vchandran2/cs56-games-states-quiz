@@ -9,9 +9,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
@@ -43,6 +40,8 @@ public class MapPanel extends JPanel implements ActionListener {
 	private Country c;
 	private BufferedImage map;
 
+	private SoundManager soundManager;
+
 	public MapPanel() {
 
 		this.setLayout(null);
@@ -72,7 +71,7 @@ public class MapPanel extends JPanel implements ActionListener {
 
 		statesArray = c.getStatesArray();
 
-		Clip buttonNormal = getNormalButtonSound();
+		soundManager = new SoundManager();
 
 		for (int i = 0; i < statesArray.size(); i++) {
 			stateButtons[i] = new JButton();
@@ -83,16 +82,8 @@ public class MapPanel extends JPanel implements ActionListener {
 
 			stateButtons[i].setBounds(x, y, width, height);
 			stateButtons[i].addActionListener(this);
-			stateButtons[i].
 		}
 
-	}
-
-	private Clip getNormalButtonSound() {
-		// Create sound effect
-		String buttonNormal = "sound/button_normal.wav";
-		AudioInputStream audioInputStream
-				= AudioSystem.getAudioInputStream(new File(buttonNormal).getAbsoluteFile());
 	}
 
 	/**
@@ -134,7 +125,12 @@ public class MapPanel extends JPanel implements ActionListener {
 	 */
 
 	public void actionPerformed(ActionEvent e) {
-		questionManager.mapClickCallback(e.getSource());
+		boolean answeredCorrectly = questionManager.mapClickCallback(e.getSource());
+		if (answeredCorrectly) {
+			soundManager.playCorrectSound();
+		} else {
+			soundManager.playIncorrectSound();
+		}
 	}
 
 	/**
@@ -143,5 +139,9 @@ public class MapPanel extends JPanel implements ActionListener {
 
 	public Country getCountry() {
 		return c;
+	}
+
+	public SoundManager getSoundManager() {
+		return soundManager;
 	}
 }
