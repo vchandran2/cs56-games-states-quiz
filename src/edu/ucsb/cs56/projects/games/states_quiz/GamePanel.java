@@ -7,11 +7,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.AdjustmentEvent;
 import java.awt.event.AdjustmentListener;
 
-import javax.swing.JButton;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
-import javax.swing.ScrollPaneConstants;
+import javax.swing.*;
 
 /**
  * GamePanel sets up the GamePanel with the frame that holds the text for questions and answers and the scrollbar.
@@ -51,9 +47,9 @@ public class GamePanel extends JPanel implements ActionListener {
 		questionTextArea = this.generateQuestionTextArea(4, 20, ourFont, questionText);
 		answerTextArea = this.generateAnswerTextArea(20, 10, ourFont, answerText);
 
-		int hintX = (int) (.57 * SCREEN_WIDTH);
-		int hintY = (int) (.7 * SCREEN_HEIGHT);
-		hintButton = this.generateHintButton(hintX, hintY, 150, 50, "Click For Hint");
+		int hintX = (int) (.55 * SCREEN_WIDTH);
+		int hintY = (int) (.68 * SCREEN_HEIGHT); //was .7
+		hintButton = this.generateHintButton(hintX, hintY, 180, 60, "Click For Hint");
 		mapPanel.add(hintButton);
 
 		this.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
@@ -72,7 +68,10 @@ public class GamePanel extends JPanel implements ActionListener {
 
 	public void actionPerformed(ActionEvent event) {
 		State state = mapPanel.getQuestionManager().getCorrectState();
-		hintButton.setText(this.getStateQuadrant(state.getXCoord(), state.getYCoord()));
+		//hintButton.setText(this.getStateQuadrant(state.getXCoord(), state.getYCoord())+"\nThe first letter of the capital is "+ getFirstLetterOfCapital(state.getCapital()));
+	    String stateHint = this.getStateQuadrant(state.getXCoord(), state.getYCoord());
+        String capitalHint = "Capital's first letter: "+ getFirstLetterOfCapital(state.getCapital());
+        hintButton.setText("<html>State is " + stateHint + " " + capitalHint + "</html>");
 	}
 
 	/**
@@ -85,7 +84,8 @@ public class GamePanel extends JPanel implements ActionListener {
 	 */
 
 	private JButton generateHintButton(int x, int y, int w, int h, String text) {
-		JButton hintButton = new JButton(text);
+		JButton hintButton = new JButton();
+        hintButton.setText("<html>" + text + "</html>");
 		hintButton.setEnabled(true);
 		hintButton.setVisible(false);
 		hintButton.setBounds(x, y, w, h);
@@ -214,4 +214,8 @@ public class GamePanel extends JPanel implements ActionListener {
 		}
 		return quadrant;
 	}
+
+	public String getFirstLetterOfCapital(String capital) {
+        return capital.substring(0, 1);
+    }
 }
