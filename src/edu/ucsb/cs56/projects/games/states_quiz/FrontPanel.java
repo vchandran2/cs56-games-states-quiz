@@ -4,7 +4,10 @@ package edu.ucsb.cs56.projects.games.states_quiz;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Scanner;
 
 import javax.imageio.ImageIO;
 import javax.swing.ButtonGroup;
@@ -14,7 +17,7 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
 /**
- * FrontPanel displays the game and difficulty options at the start of the game.
+ * FrontPanel displays the game, high score, and difficulty options at the start of the game.
  *
  * @author Zhansaya Abdikarimova
  * @author Jenny Vien
@@ -25,8 +28,7 @@ import javax.swing.JRadioButton;
 
 public class FrontPanel extends JPanel {
 	private BufferedImage map;
-	private JLabel title;
-	private JLabel diffHeader;
+	private JLabel highScore;
 	private JButton stateButton;
 	private JButton capitalButton;
 	private JButton stateThenCapitalButton;
@@ -47,7 +49,7 @@ public class FrontPanel extends JPanel {
 
 		assert (map != null);
 
-		title = new JLabel("Welcome to the Country Quiz!", JLabel.CENTER);
+		JLabel title = new JLabel("Welcome to the Country Quiz!", JLabel.CENTER);
 		Font titleFont = new Font("TimesRoman", Font.PLAIN, 50);
 		title.setFont(titleFont);
 
@@ -55,13 +57,16 @@ public class FrontPanel extends JPanel {
 		stateButton = new JButton("States");
 		stateButton.setFont(modeFont);
 
+		JLabel highScore = createHighScoreLabel();
+		highScore.setFont(modeFont);
+
 		capitalButton = new JButton("Capitals");
 		capitalButton.setFont(modeFont);
 
 		stateThenCapitalButton = new JButton("States then Capitals");
 		stateThenCapitalButton.setFont(modeFont);
 
-		diffHeader = new JLabel("Select difficulty:", JLabel.CENTER);
+		JLabel diffHeader = new JLabel("Select difficulty:", JLabel.CENTER);
 		Font diffHeaderFont = new Font("TimesRoman", Font.PLAIN, 20);
 		diffHeader.setFont(diffHeaderFont);
 
@@ -88,23 +93,44 @@ public class FrontPanel extends JPanel {
 		capitalButton.setBounds(340, 400, 300, 100);
 		stateThenCapitalButton.setBounds(340, 520, 300, 100);
 
+		highScore.setBounds(
+				(GamePanel.SCREEN_WIDTH - highScore.getPreferredSize().width) / 2,
+				title.getY() + 140,
+				highScore.getPreferredSize().width,
+				highScore.getPreferredSize().height
+		);
+
 		diffHeader.setBounds(450, 200, 600, 200);
 		easyButton.setBounds(700, 300, 80, 80);
 		normalButton.setBounds(700, 350, 80, 80);
 		hardButton.setBounds(700, 400, 80, 80);
 
-		this.add(title);
-		this.add(stateButton);
-		this.add(capitalButton);
-		this.add(stateThenCapitalButton);
+		add(title);
+		add(highScore);
+		add(stateButton);
+		add(capitalButton);
+		add(stateThenCapitalButton);
 
-		this.add(diffHeader);
-		this.add(easyButton);
-		this.add(normalButton);
-		this.add(hardButton);
+		add(diffHeader);
+		add(easyButton);
+		add(normalButton);
+		add(hardButton);
 
-		this.setVisible(true);
-		this.repaint();
+		setVisible(true);
+		repaint();
+	}
+
+	private JLabel createHighScoreLabel() {
+		File file = new File("high_score.txt");
+		JLabel label = new JLabel("High Score: 0");
+		try {
+			Scanner scanner = new Scanner(file);
+			int highScore = scanner.nextInt();
+			label.setText("High Score: " + Integer.toString(highScore));
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		return label;
 	}
 
 	public void paintComponent(Graphics g) {

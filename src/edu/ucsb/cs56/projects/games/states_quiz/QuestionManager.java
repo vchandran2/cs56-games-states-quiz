@@ -1,7 +1,11 @@
 package edu.ucsb.cs56.projects.games.states_quiz;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Objects;
+import java.util.Scanner;
 
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
@@ -137,6 +141,7 @@ public class QuestionManager {
 		} else {
 			mapPanel.getSoundManager().playCompletedSound();
 			gamePanel.appendQuestionTextArea("You're finished! Yay!");
+			recordHighScore();
 			int n = JOptionPane.showConfirmDialog(
 					gamePanel.getParent(),
 					"Would you like to play again?",
@@ -147,7 +152,21 @@ public class QuestionManager {
 			} else {
 				reloadFrame.run();
 			}
+		}
+	}
 
+	public void recordHighScore() {
+		File file = new File("high_score.txt");
+		try {
+			// Get current high score
+			Scanner scanner = new Scanner(file);
+			int highScore = scanner.nextInt();
+
+			FileWriter writer = new FileWriter("high_score.txt");
+			writer.write(Integer.toString(Math.max(highScore, currentScore)));
+			writer.close();
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 	}
 

@@ -2,12 +2,14 @@ package edu.ucsb.cs56.projects.games.states_quiz;
 
 import java.awt.BorderLayout;
 import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.AdjustmentEvent;
 import java.awt.event.AdjustmentListener;
 
-import javax.swing.*;
+import javax.swing.JButton;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.ScrollPaneConstants;
 
 /**
  * GamePanel sets up the GamePanel with the frame that holds the text for questions and answers and the scrollbar.
@@ -33,20 +35,19 @@ public class GamePanel extends JPanel {
 	private JScrollPane questionScrollPane;
 	private JScrollPane answerScrollPane;
 	private JButton hintButton;
-	private JButton homeButton;
-	private Font ourFont;
 	private Runnable reloadFrame;
+	private QuestionManager questionManager;
 
 	public GamePanel(Runnable reloadFrame) {
 		this.reloadFrame = reloadFrame;
-		ourFont = new Font("Arial", Font.PLAIN, 24);
+		Font ourFont = new Font("Arial", Font.PLAIN, 24);
 		mapPanel = new MapPanel();
 
 		String questionText = "Welcome to the USA map quiz!\n";
 		String answerText = "Correct Answers:\n";
 
-		questionTextArea = this.generateQuestionTextArea(4, 20, ourFont, questionText);
-		answerTextArea = this.generateAnswerTextArea(20, 10, ourFont, answerText);
+		questionTextArea = generateQuestionTextArea(4, 20, ourFont, questionText);
+		answerTextArea = generateAnswerTextArea(20, 10, ourFont, answerText);
 
 		int hintX = (int) (.55 * SCREEN_WIDTH);
 		int hintY = (int) (.68 * SCREEN_HEIGHT); //was .7
@@ -55,7 +56,7 @@ public class GamePanel extends JPanel {
 
 		int homeX = (int) (.01 * SCREEN_WIDTH);
 		int homeY = (int) (.55 * SCREEN_HEIGHT);
-		homeButton = this.generateHomeButton(homeX, homeY, 120, 60, "Main Menu");
+		JButton homeButton = this.generateHomeButton(homeX, homeY, 120, 60, "Main Menu");
 		mapPanel.add(homeButton);
 
 		this.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
@@ -81,10 +82,12 @@ public class GamePanel extends JPanel {
 		homeButton.setVisible(true);
 		homeButton.setBounds(x, y, w, h);
 		homeButton.addActionListener(e -> {
+			questionManager.recordHighScore();
 			reloadFrame.run();
 		});
 		return homeButton;
 	}
+
 	/**
 	 * @param x    x coord of hintButton
 	 * @param y    y coord of hintButton
@@ -244,4 +247,8 @@ public class GamePanel extends JPanel {
 	public String getFirstLetterOfCapital(String capital) {
         return capital.substring(0, 1);
     }
+
+	public void setQuestionManager(QuestionManager questionManager) {
+		this.questionManager = questionManager;
+	}
 }
