@@ -188,8 +188,16 @@ public class GamePanel extends JPanel {
 	 *
 	 * @param text the text to append to the question area
 	 */
-	public void setQuestionTextArea(String text) {
+	public void appendQuestionTextArea(String text) {
 		this.questionTextArea.append(text);
+	}
+
+	/**
+	 * Sets text in questionTextArea.
+	 * @param text the text to set the question area to
+	 */
+	public void setQuestionTextArea(String text) {
+		questionTextArea.setText(text);
 	}
 
 	/**
