@@ -18,21 +18,21 @@ import javax.swing.JOptionPane;
  */
 
 public class QuestionManager {
-	protected GamePanel gamePanel;
-	protected MapPanel mapPanel;
+    protected GamePanel gamePanel;
+    protected MapPanel mapPanel;
 
-	protected String gameMode;
-	protected String difficulty;
-	protected String option;
-	protected int currentQuestion;
-	protected int randIndex;
-	protected int currentScore;
-	protected int guesses = 0;
+    protected String gameMode;
+    protected String difficulty;
+    protected String option;
+    protected int currentQuestion;
+    protected int randIndex;
+    protected int currentScore;
+    protected int guesses = 0;
 
-	protected ArrayList<State> states;
-	protected ArrayList<Integer> randStateIndexes;
-	protected ArrayList<State> correctStates;
-	protected ArrayList<JButton> hiddenButtons;
+    protected ArrayList<State> states;
+    protected ArrayList<Integer> randStateIndexes;
+    protected ArrayList<State> correctStates;
+    protected ArrayList<JButton> hiddenButtons;
 
 	private Runnable reloadFrame;
 
@@ -46,81 +46,81 @@ public class QuestionManager {
 		randStateIndexes = new ArrayList<Integer>();
 		hiddenButtons = new ArrayList<JButton>();
 
-		gamePanel = parent;
-		mapPanel = gamePanel.getMapPanel();
-		mapPanel.setQuestionManager(this);
-		states = mapPanel.getCountry().getStatesArray();
+        gamePanel = parent;
+        mapPanel = gamePanel.getMapPanel();
+        mapPanel.setQuestionManager(this);
+        states = mapPanel.getCountry().getStatesArray();
 
-		for (int i = 0; i < states.size(); i++) {
-			randStateIndexes.add(i);
-		}
-	}
+        for (int i = 0; i < states.size(); i++) {
+            randStateIndexes.add(i);
+        }
+    }
 
-	/**
-	 * Sets the current question and score to zero and then asks the first
-	 * question. Also gets the GUI and MapPanel from GameFrame.
-	 */
-	public void init() {
-		randIndex = (int) (Math.random() * states.size());
-		currentQuestion = randStateIndexes.get(randIndex);
-		currentScore = 0;
+    /**
+     * Sets the current question and score to zero and then asks the first
+     * question. Also gets the GUI and MapPanel from GameFrame.
+     */
+    public void init() {
+        randIndex = (int) (Math.random() * states.size());
+        currentQuestion = randStateIndexes.get(randIndex);
+        currentScore = 0;
 
-		this.askNextQuestion();
-	}
+        this.askNextQuestion();
+    }
 
-	/**
-	 * Called by the MapPanel when a button is pressed on the screen.
-	 *
-	 * @param o Object representing the button that was clicked.
-	 */
-	public boolean mapClickCallback(Object o) {
-		return this.receiveAnswer(((JButton) o));
-	}
+    /**
+     * Called by the MapPanel when a button is pressed on the screen.
+     *
+     * @param o Object representing the button that was clicked.
+     */
+    public boolean mapClickCallback(Object o) {
+        return this.receiveAnswer(((JButton) o));
+    }
 
-	/**
-	 * Called by GamePanel when receiving an event
-	 *
-	 * @return returns correct state
-	 */
-	public State getCorrectState() {
-		return this.states.get(currentQuestion);
-	}
+    /**
+     * Called by GamePanel when receiving an event
+     *
+     * @return returns correct state
+     */
+    public State getCorrectState() {
+        return this.states.get(currentQuestion);
+    }
 
-	/**
-	 * @return returns current difficulty
-	 */
+    /**
+     * @return returns current difficulty
+     */
 
-	public String getDifficulty() {
-		return this.difficulty;
-	}
+    public String getDifficulty() {
+        return this.difficulty;
+    }
 
-	/**
-	 * Called by the GameFrame when the game starts
-	 *
-	 * @param diff String representing the difficulty selected
-	 */
+    /**
+     * Called by the GameFrame when the game starts
+     *
+     * @param diff String representing the difficulty selected
+     */
 
-	public void setDifficulty(String diff) {
-		this.difficulty = diff;
-	}
+    public void setDifficulty(String diff) {
+        this.difficulty = diff;
+    }
 
-	/**
-	 * @return returns the selected game mode
-	 */
+    /**
+     * @return returns the selected game mode
+     */
 
-	public String getGameMode() {
-		return this.gameMode;
-	}
+    public String getGameMode() {
+        return this.gameMode;
+    }
 
-	/**
-	 * Called by GameFrame when a game mode is selected and the game starts
-	 *
-	 * @param mode String that represents the game mode selected
-	 */
+    /**
+     * Called by GameFrame when a game mode is selected and the game starts
+     *
+     * @param mode String that represents the game mode selected
+     */
 
-	public void setGameMode(String mode) {
-		this.gameMode = mode;
-	}
+    public void setGameMode(String mode) {
+        this.gameMode = mode;
+    }
 
 	/**
 	 * Asks the next question if the question counter is less than 50. Prints
@@ -175,23 +175,23 @@ public class QuestionManager {
 			}
 			gamePanel.setQuestionTextArea(message);
 
-			correctStates.add(states.get(currentQuestion));
+            correctStates.add(states.get(currentQuestion));
 
-			for (JButton button : this.hiddenButtons) {
-				button.setVisible(true);
-			}
+            for (JButton button : this.hiddenButtons) {
+                button.setVisible(true);
+            }
 
-			if (this.getDifficulty().equals("Easy")) {
-				answerButton.setVisible(false);
-			}
+            if (this.getDifficulty().equals("Easy")) {
+                answerButton.setVisible(false);
+            }
 
-			randStateIndexes.remove(randIndex);
-			if (!randStateIndexes.isEmpty()) {
-				randIndex = (int) (Math.random() * (randStateIndexes.size() - 1));
-				currentQuestion = randStateIndexes.get(randIndex);
-			}
+            randStateIndexes.remove(randIndex);
+            if (!randStateIndexes.isEmpty()) {
+                randIndex = (int) (Math.random() * (randStateIndexes.size() - 1));
+                currentQuestion = randStateIndexes.get(randIndex);
+            }
 
-			gamePanel.setHintButtonVisible(false);
+            gamePanel.setHintButtonVisible(false);
 
 			if (guesses == 0)
 				currentScore++;
@@ -209,18 +209,25 @@ public class QuestionManager {
 			if (guesses == 3)
 				gamePanel.setHintButtonVisible(true);
 
-			String stateChosen = "";
-			for (int i = 0; i < 50; i++) {
-				if (answerButton == mapPanel.stateButtons[i]) {
-					stateChosen = states.get(i).getName();
-					break;
-				}
-			}
-			gamePanel.getQuestionTextArea().setText("Nope! That was " + stateChosen + "! Total guesses: " + this.guesses + "\n");
-			this.askNextQuestion();
-			return false;
-		}
-	}
+            String stateChosen = "";
+            String capitalChosen = "";
+            for (int i = 0; i < 50; i++) {
+                if (answerButton == mapPanel.stateButtons[i]) {
+                    stateChosen = states.get(i).getName();
+                    capitalChosen = states.get(i).getCapital();
+                    break;
+                }
+            }
+            if (getGameMode().equals("States") || getGameMode().equals("States then Capitals")) {
+                gamePanel.getQuestionTextArea().setText("Nope! That was " + stateChosen + "! Total guesses: " + this.guesses + "\n");
+            }
+            else if (getGameMode().equals("Capitals")) {
+                gamePanel.getQuestionTextArea().setText("Nope! That was " + capitalChosen + "! Total guesses: " + this.guesses + "\n");
+            }
+            this.askNextQuestion();
+            return false;
+        }
+    }
 
 	/**
 	 * Called when in StateThenCapitals mode
@@ -240,12 +247,12 @@ public class QuestionManager {
 		return answer;
 	}
 
-	/**
-	 * Called by checkCapital during StateThenCapitals mode
-	 * Prompts the user for the capital of the current state
-	 *
-	 * @return boolean representing if capital input is correct or not
-	 */
+    /**
+     * Called by checkCapital during StateThenCapitals mode
+     * Prompts the user for the capital of the current state
+     *
+     * @return boolean representing if capital input is correct or not
+     */
 
 	private AnswerOption askCapital() {
 		String s = JOptionPane.showInputDialog(

@@ -26,12 +26,15 @@ public class GameFrame extends JFrame implements ActionListener {
     private FrontPanel frontPanel;
     private QuestionManager questionManager;
 
-	public GameFrame() {
+    public GameFrame() {
         init();
     }
 
     private void init() {
-        gamePanel = new GamePanel();
+        gamePanel = new GamePanel(() -> {
+            GameFrame.this.getContentPane().removeAll();
+            GameFrame.this.init();
+        });
 
 		frontPanel = new FrontPanel();
 
@@ -59,8 +62,8 @@ public class GameFrame extends JFrame implements ActionListener {
         frontPanel.setVisible(false);
         gamePanel.setVisible(true);
         questionManager = new QuestionManager(gamePanel, () -> {
-            getContentPane().removeAll();
-            init();
+            GameFrame.this.getContentPane().removeAll();
+            GameFrame.this.init();
         });
 
 
