@@ -53,7 +53,10 @@ public class GamePanel extends JPanel {
 		hintButton = this.generateHintButton(hintX, hintY, 180, 60, "Click For Hint");
 		mapPanel.add(hintButton);
 
-
+		int homeX = (int) (.01 * SCREEN_WIDTH);
+		int homeY = (int) (.55 * SCREEN_HEIGHT);
+		homeButton = this.generateHomeButton(homeX, homeY, 120, 60, "Main Menu");
+		mapPanel.add(homeButton);
 
 		this.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
 
@@ -132,11 +135,6 @@ public class GamePanel extends JPanel {
 		textArea.setEditable(false);
 		textArea.append(text);
 
-
-		int homeX = (int) (.80 * SCREEN_WIDTH);
-		int homeY = (int) (.85 * SCREEN_HEIGHT);
-		homeButton = this.generateHomeButton(homeX, homeY, 150, 60, "Main Menu");
-		this.add(homeButton);
 
 		return textArea;
 	}
