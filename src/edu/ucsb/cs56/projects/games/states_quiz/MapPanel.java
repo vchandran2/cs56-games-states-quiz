@@ -84,6 +84,7 @@ public class MapPanel extends JPanel implements ActionListener {
 			stateButtons[i].addActionListener(this);
 		}
 
+
 	}
 
 	/**
@@ -144,4 +145,5 @@ public class MapPanel extends JPanel implements ActionListener {
 	public SoundManager getSoundManager() {
 		return soundManager;
 	}
+
 }
