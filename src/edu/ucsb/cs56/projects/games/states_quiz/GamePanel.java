@@ -37,6 +37,7 @@ public class GamePanel extends JPanel {
 	private JButton hintButton;
 	private Runnable reloadFrame;
 	private QuestionManager questionManager;
+	private StopWatch stopWatch;
 
 	public GamePanel(Runnable reloadFrame) {
 		this.reloadFrame = reloadFrame;
@@ -69,7 +70,9 @@ public class GamePanel extends JPanel {
 		this.add(questionScrollPane, BorderLayout.SOUTH);
 		this.add(answerScrollPane, BorderLayout.EAST);
 
-
+		stopWatch = new StopWatch((int) (.57 * SCREEN_WIDTH), (int) (.6 * SCREEN_HEIGHT), 160, 80);
+		mapPanel.add(stopWatch);
+		stopWatch.start();
 
 		this.setVisible(false);
 		this.repaint();

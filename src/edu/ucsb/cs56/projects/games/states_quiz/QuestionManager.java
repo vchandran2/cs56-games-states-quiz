@@ -68,7 +68,6 @@ public class QuestionManager {
         randIndex = (int) (Math.random() * states.size());
         currentQuestion = randStateIndexes.get(randIndex);
         currentScore = 0;
-
         this.askNextQuestion();
     }
 
