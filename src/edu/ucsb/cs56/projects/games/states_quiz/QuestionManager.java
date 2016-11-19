@@ -219,6 +219,7 @@ public class QuestionManager {
 			this.askNextQuestion();
 			return true;
 		} else {
+			gamePanel.getStopWatch().addPenalty();
 			if (this.getDifficulty().equals("Hard")) {
 				answerButton.setVisible(false);
 				this.hiddenButtons.add(answerButton);
@@ -258,6 +259,7 @@ public class QuestionManager {
 			gamePanel.appendQuestionTextArea("Capital is Incorrect! ");
 			answer = askCapital();
 			this.guesses++;
+			gamePanel.getStopWatch().addPenalty();
 		}
 		if (answer == AnswerOption.NO_ANSWER) {
 			guesses++;

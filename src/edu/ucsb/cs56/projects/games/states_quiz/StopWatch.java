@@ -26,7 +26,7 @@ public class StopWatch extends JLabel {
 
     public void start() {
         ActionListener task = evt -> {
-            seconds ++;
+            seconds++;
             setText("Time Elapsed: " + seconds + " s");
         };
         Timer timer = new Timer(1000, task); // Execute task each 1000 milliseconds
@@ -34,5 +34,7 @@ public class StopWatch extends JLabel {
         timer.start();
     }
 
-
+    public void addPenalty() {
+        seconds += 2;
+    }
 }
